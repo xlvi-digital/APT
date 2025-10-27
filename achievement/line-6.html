@@ -652,13 +652,15 @@
           var sku = $("#sku_running").text();
           var hasilProduksi = "";
 
-          // ✅ Ambil seluruh teks termasuk nilai grade (A–E)
+          // ✅ Ambil teks tanpa tombol hapus
           $(".hasil_produksi").each(function () {
-            var text = $(this).text().trim();
-            hasilProduksi += text + "%0a"; // Gak perlu substring lagi
+            var clone = $(this).clone(); // duplikat elemen
+            clone.find("button").remove(); // hapus tombol hapus
+            var text = clone.text().trim(); // ambil teks bersih
+            hasilProduksi += text + "%0a";
           });
 
-          // ✅ Encode komponen teks agar aman untuk URL (spasi, tanda baca, dll)
+          // ✅ Gunakan encodeURIComponent agar teks aman dikirim
           var url =
             "https://wa.me/+62" +
             no_hp +
@@ -666,7 +668,9 @@
             encodeURIComponent(
               `*${title}*\n_*${line}*_\n*${tgl_produksi}*\n\n_${sku}_ ${total_produksi}\n\n${$(".hasil_produksi")
                 .map(function () {
-                  return $(this).text().trim();
+                  var clone = $(this).clone();
+                  clone.find("button").remove();
+                  return clone.text().trim();
                 })
                 .get()
                 .join("\n")}\n\n${noted}`
