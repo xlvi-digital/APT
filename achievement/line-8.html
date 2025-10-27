@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+    <meta name="generator" content="Hugo 0.104.2" />
+    <title>My Padamelan</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/" />
+
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- my Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet" />
+
+    <!-- Box Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+
+    <!-- Sweetalert2 -->
+    <link rel="stylesheet" href="../assets/dist/sweetalert2/sweetalert2.min.css" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: solid rgba(0, 0, 0, 0.15);
+        border-width: 1px 0;
+        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1), inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="../css/dashboard.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="navbar navbar-dark sticky-top bg-danger flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#" style="font-family: 'Agbalumo'; text-transform: uppercase">MY padamelan</a>
+      <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="position-sticky mb-2 sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">
+                  <i class="bx bx-package"></i>
+                  Opname Material
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="../reject.html">
+                  <i class="bx bxs-coffee-togo"></i>
+                  Data Reject
+                </a>
+              </li>
+            </ul>
+            <h6 class="sidebar-heading align-items-center px-3 mt-3 mb-1 text-body-secondary text-uppercase">Line 6</h6>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="../achievement/line-6.html">
+                  <i class="bx bx-radio-circle-marked"></i>
+                  Update Achievement
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../blowing/line6.html">
+                  <i class="bx bx-radio-circle-marked"></i>
+                  Update Blowing
+                </a>
+              </li>
+            </ul>
+            <h6 class="sidebar-heading align-items-center px-3 mt-3 mb-1 text-body-secondary text-uppercase">Line 7</h6>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="../achievement/line-7.html">
+                  <i class="bx bx-radio-circle-marked"></i>
+                  Update Achievement
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../blowing/line7.html">
+                  <i class="bx bx-radio-circle-marked"></i>
+                  Update Blowing
+                </a>
+              </li>
+            </ul>
+            <h6 class="sidebar-heading align-items-center px-3 mt-3 mb-1 text-body-secondary text-uppercase">Line 8</h6>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="../achievement/line-8.html">
+                  <i class="bx bx-radio-circle-marked"></i>
+                  Update Achievement
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../blowing/line8.html">
+                  <i class="bx bx-radio-circle-marked"></i>
+                  Update Blowing
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2 mb-2">Update Achievement</h1>
+          </div>
+
+          <!-- Modal -->
+          <form id="formTransaksi">
+            <div class="modal fade" id="whatapps" tabindex="-1" aria-labelledby="whatappsLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="whatappsLabel">Modal Whatapps</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <label for="no_hp">Masukan No Whatapps</label>
+                    <input type="number" name="no_hp" id="no_hp" class="form-control form-control-sm" />
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="wa" class="btn btn-success">Kirim</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <div class="row text-center">
+                  <div class="col-md-12">
+                    <h4 id="title">Hasil Produksi Shift <span id="shift">shift</span></h4>
+                    <h4 id="line_running"><i>LINE 8</i></h4>
+                    <h4 id="tgl_produksi"></h4>
+                    <i id="sku_running">Le Minerale 600ml <span id="sku">sku</span></i>
+                    <hr />
+                    <div class="result"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title">SKU</h5>
+              </div>
+              <div class="card-body">
+                <div class="row form-sku">
+                  <div class="col-md-6 col-sm-6 mb-2">
+                    <select class="form-select" id="input-shift" style="border-radius: 5px; font-size: 1rem">
+                      <option selected value="shift">Shift</option>
+                      <option value="1">Shift 1</option>
+                      <option value="2">Sihft 2</option>
+                      <option value="3">Shift 3</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <input type="date" class="form-control" id="input_tgl" name="input_tgl" required placeholder="Enter Name here" />
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <select class="form-select sku" id="input-sku" name="sku" style="border-radius: 5px; font-size: 1rem">
+                      <option selected value="sku">Pilih SKU</option>
+                      <option value="Promo">Promo</option>
+                      <option value="Reguler">Reguler</option>
+                      <option value="Reguler_GT">Reguler GT</option>
+                      <option value="Phill_Reguler">Phill Reguler</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-12">
+                    <button type="button" class="btn btn-dark" id="buttonSku">Sumbit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h5>Jam dan No Pallet</h5>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6 mb-2">
+                    <div class="form-floating mb-2">
+                      <input type="time" class="form-control form-control-sm" id="jam_awal" name="jam_awal" required placeholder="Enter Name here" />
+                      <label for="jam_awal">Dari Jam </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <div class="form-floating mb-2">
+                      <input type="time" class="form-control form-control-sm" id="jam_akhir" name="jam_akhir" required placeholder="Enter Name here" />
+                      <label for="jam_akhir">Sampai Jam </label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mb-2">
+                    <div class="form-floating mb-2">
+                      <input type="number" class="form-control form-control-sm" id="awal" name="awal" required placeholder="Enter Name here" />
+                      <label for="awal">No Pallet Awal </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <div class="form-floating mb-3">
+                      <input type="number" class="form-control form-control-sm" id="akhir" name="akhir" required placeholder="Enter Name here" />
+                      <label for="akhir">No Pallet Akhir </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <a class="btn btn-outline-dark mb-2" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-caret-down" style="vertical-align: bottom; font-size: 1.5rem"></i>
+                    Noted
+                  </div>
+                </a>
+                <div class="collapse" id="collapseExample">
+                  <div class="row">
+                    <div class="col-md-6 mb-2">
+                      <div class="form-floating mb-3">
+                        <input type="number" class="form-control form-control-sm" id="receh" name="receh" placeholder="Enter Name here" />
+                        <label for="receh">Receh </label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                      <div class="form-floating mb-3">
+                        <input type="number" class="form-control form-control-sm" id="buffer" name="buffer" placeholder="Enter Name here" />
+                        <label for="buffer">Buffer </label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                      <div class="form-floating mb-3">
+                        <input type="number" class="form-control form-control-sm" id="minus" name="minus" placeholder="Enter Name here" />
+                        <label for="minus">Minus </label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control form-control-sm" id="note" name="note" placeholder="Enter Name here" />
+                        <label for="note">Note </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sticky-bottom bg-light">
+              <div class="d-flex justify-content-end flex-wrap flex-md-nowrap align-items-center pt-3 border-top">
+                <div class="btn-toolbar mt-2 mb-md-0">
+                  <div class="me-1">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#whatapps" class="btn btn-outline-success btn-sm font-weight-medium rounded-pill px-4">
+                      <div class="d-flex align-items-center">
+                        <i class="bx bxl-whatsapp" style="vertical-align: bottom; font-size: 1.5rem"></i>
+                        Share
+                      </div>
+                    </button>
+                  </div>
+                  <div class="btn-group me-1">
+                    <button type="button" id="delete" class="btn btn-outline-danger btn-sm font-weight-medium rounded-pill px-4">
+                      <div class="d-flex align-items-center">
+                        <i data-feather="send" class="feather-sm fill-white me-1"></i>
+                        Reset
+                      </div>
+                    </button>
+                  </div>
+                  <div class="me-1">
+                    <button type="submit" class="btn btn-outline-primary btn-sm font-weight-medium rounded-pill px-4">
+                      <div class="d-flex align-items-center">
+                        <i data-feather="send" id="submit" class="feather-sm fill-white me-1"></i>
+                        Submit
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../assets/dist/sweetalert2/sweetalert2.min.js"></script>
+
+    <script>
+      // Mengatur nilai input tanggal menjadi tanggal hari ini
+      $(document).ready(function () {
+        document.getElementById("input_tgl").valueAsDate = new Date();
+
+        // Mendapatkan nilai dari input tanggal
+        var inputTanggal = document.getElementById("input_tgl").valueAsDate;
+
+        // Mengatur nilai h4 dengan format "Hari, Tanggal Bulan Tahun"
+        var options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+        var formattedDate = inputTanggal.toLocaleDateString("id-ID", options);
+        document.getElementById("tgl_produksi").textContent = formattedDate;
+      });
+    </script>
+
+    <script>
+      // method
+      function insert() {
+        const form = $("#formTransaksi").serializeArray();
+        let line8 = JSON.parse(localStorage.getItem("line8")) || [];
+
+        let newData = {};
+
+        form.forEach(function (item, index) {
+          let name = item["name"];
+          let value = name === "id" ? Number(item["value"]) : item["value"];
+          newData[name] = value;
+        });
+
+        // console.log(newData)
+        localStorage.setItem("line8", JSON.stringify([...line8, newData]));
+        return newData;
+      }
+
+      function showData(line8) {
+        var row = "";
+
+        var awal = 0;
+        var akhir = 0;
+        var hasil = 0;
+        var jumlahCar = 0;
+        var persen = 0;
+        var total = 0;
+        var produk = $("#input-produk").val();
+
+        // row += `<br/>`;
+        var formatTotal = "";
+        var totalAkhir = "";
+        var buffer = $("#buffer").val();
+        var minus = $("#minus").val();
+
+        line8.forEach(function (item, index) {
+          hasil = item["akhir"] - item["awal"];
+          if (item["receh"]) {
+            jumlahCar = hasil * 40 + Number(item["receh"]);
+          } else {
+            jumlahCar = hasil * 40;
+          }
+
+          persen = Math.round((jumlahCar / 3000) * 100);
+
+          total += Number(jumlahCar);
+          var formatJumlahCar = jumlahCar.toLocaleString("en-US").replace(",", ".");
+          formatTotal = total.toLocaleString("en-US").replace(",", ".");
+
+          var jamAwal = item.jam_awal.replace(":", "."); // Mengganti ":" dengan "."
+          var jamAkhir = item.jam_akhir.replace(":", "."); // Mengganti ":" dengan "."
+          row += `
+              <p id="hasil_produksi_${index}" class="hasil_produksi">
+                ${jamAwal}-${jamAkhir} = ${formatJumlahCar} car ${persen}% 
+                <button onclick="deleteData(${index})" class="btn btn-danger btn-sm mb-2">
+                Hapus
+                </button>
+              </p>`;
+        });
+        var note = $("#note").val();
+        var bufferNumber = Number(buffer); // Pastikan buffer juga berupa angka
+        var minusNumber = Number(minus); // Pastikan buffer juga berupa angka
+        if (minus != 0) {
+          totalAkhir = total - minusNumber;
+          var formatedTotal = totalAkhir.toLocaleString("en-US").replace(",", ".");
+          row += `<b id='total_produksi'> *${formatedTotal} car*</b>`;
+          row += `<br/>`;
+          row += `<b id='noted'>*${note} = ${minus} car*</b>`;
+        } else if (buffer != 0) {
+          totalAkhir = total + bufferNumber;
+          var formatedTotal = totalAkhir.toLocaleString("en-US").replace(",", ".");
+          row += `<b id='total_produksi'> *${formatedTotal} car*</b>`;
+          row += `<br/>`;
+          row += `<b id='noted'>*${note} = ${buffer} car*</b>`;
+        } else {
+          row += `<b id='total_produksi'> *${formatTotal} car*</b>`;
+          row += `<br/>`;
+          row += `<b id='noted'>${note}</b>`;
+        }
+
+        if (line8.length == 0) {
+          return (row = `<h5>
+                Silahkan Isi Form Di bawah Ini
+              </h5>`);
+        }
+
+        row.replace("${total}", total);
+
+        return row;
+      }
+
+      function deleteData(index) {
+        var akhir = document.getElementById("akhir").value;
+        var jamAwal = document.getElementById("jam_awal").value;
+        // var update2 = document.getElementById("total").innerHTML;
+        // alert(total);
+        document.getElementById("awal").value = null;
+        document.getElementById("akhir").value = null;
+        document.getElementById("jam_akhir").value = jamAwal;
+
+        var jamAkhir = document.getElementById("jam_awal").value;
+        var jamAkhirArray = jamAkhir.split(":");
+
+        var jamAkhirBaru = parseInt(jamAkhirArray[0]) - 1;
+        if (jamAkhirBaru === 24) {
+          jamAkhirBaru = 0;
+          jamAkhirArray[0] = "00";
+        } else {
+          jamAkhirArray[0] = jamAkhirBaru.toString().padStart(2, "0");
+        }
+
+        var jamAkhirString = jamAkhirArray.join(":");
+
+        document.getElementById("jam_awal").value = jamAkhirString;
+
+        document.getElementById("receh").value = null;
+        const pElement = document.getElementById(`hasil_produksi_${index}`);
+        if (pElement) {
+          pElement.remove(); // Menghapus tag "p" berdasarkan id-nya
+
+          // Menghapus data dari line8 berdasarkan index
+          line8.splice(index, 1);
+          localStorage.setItem("line8", JSON.stringify(line8));
+
+          updateTotal(); // Memperbarui total setelah penghapusan
+        }
+      }
+
+      function updateTotal() {
+        var newTotal = 0;
+
+        line8.forEach(function (item) {
+          var hasil = item["akhir"] - item["awal"];
+          var jumlahCar = item["receh"] ? hasil * 27 + Number(item["receh"]) : hasil * 27;
+          newTotal += jumlahCar;
+        });
+
+        var totalElement = document.getElementById("total_produksi");
+        if (totalElement) {
+          totalElement.textContent = ` *${newTotal.toLocaleString("en-US").replace(",", ".")} car*`;
+        }
+      }
+
+      let dataTansaksi;
+      $(function () {
+        // initialize
+        line8 = JSON.parse(localStorage.getItem("line8")) || [];
+
+        $(".result").html(showData(line8));
+
+        $("#buttonSku").on("click", function () {
+          var inputShift = $("#input-shift").val();
+          var inputSku = $("#input-sku").val();
+          var inputProduk = $("#input-produk").val();
+
+          if (sku == "Reguler_GT") {
+            sku = "Reguler GT";
+          }
+          var tgl = "";
+
+          // Memeriksa apakah elemen dengan id "input_tgl" sudah terdefinisi
+          const tanggalInput = document.getElementById("input_tgl");
+          const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+          const tanggal = new Date(tanggalInput.value);
+          const tanggalFormat = tanggal.toLocaleDateString("id-ID", options);
+          if (tanggalFormat) {
+            $("#shift").text(inputShift);
+            $("#produk").text(inputProduk);
+            $("#sku").text(inputSku);
+            $("#tgl_produksi").text(tanggalFormat);
+          } else {
+            $("#shift").text(inputShift);
+            $("#produk").text(inputProduk);
+            $("#sku").text(inputSku);
+          }
+        });
+        // events
+        $("#formTransaksi").on("submit", function (e) {
+          e.preventDefault();
+          var shift = $("#shift").text();
+          var sku = $("#sku").text();
+
+          if (shift == "shift" || sku == "sku") {
+            Swal.fire({
+              icon: "error",
+              title: "Form SKU Belum Diisi",
+              text: "Silahkan Untuk Mengisi Form SKU Terlebih Dahulu",
+            });
+          } else {
+            line8.push(insert());
+
+            $(".result").html(showData(line8));
+            var akhir = document.getElementById("akhir").value;
+            var jamAkhir = document.getElementById("jam_akhir").value;
+            // var update2 = document.getElementById("total").innerHTML;
+            // alert(total);
+            document.getElementById("awal").value = akhir;
+            document.getElementById("akhir").value = null;
+            document.getElementById("jam_awal").value = jamAkhir;
+
+            var jamAkhir = document.getElementById("jam_akhir").value;
+            var jamAkhirArray = jamAkhir.split(":");
+
+            var jamAkhirBaru = parseInt(jamAkhirArray[0]) + 1;
+            if (jamAkhirBaru === 24) {
+              jamAkhirBaru = 0;
+              jamAkhirArray[0] = "00";
+            } else {
+              jamAkhirArray[0] = jamAkhirBaru.toString().padStart(2, "0");
+            }
+
+            var jamAkhirString = jamAkhirArray.join(":");
+
+            document.getElementById("jam_akhir").value = jamAkhirString;
+
+            document.getElementById("receh").value = null;
+          }
+        });
+
+        // meriset
+        $("#delete").on("click", function (e) {
+          e.preventDefault();
+          Swal.fire({
+            title: "Are you sure?",
+            text: "Untuk Menghapus Semua Data?!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              line8 = filterTransaksi = [];
+              localStorage.removeItem("line8");
+              $(".result").html(showData(line8));
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+            }
+          });
+        });
+
+        //
+        $("#wa").on("click", function () {
+          var title = $("#title").text();
+          var line = $("#line_running").text();
+          var tgl_produksi = $("#tgl_produksi").text();
+          var total_produksi = $("#total_produksi").text();
+          var no_hp = $("#no_hp").val();
+          var noted = $("#noted").text();
+          var sku = $("#sku_running").text();
+          var hasilProduksi = "";
+          $(".hasil_produksi").each(function () {
+            var text = $(this).text().trim();
+            var withoutDataAfterPercentage = text.substring(0, text.indexOf("%") + 1); // Mengambil teks hingga tanda '%' termasuk '%'
+            hasilProduksi += withoutDataAfterPercentage + "%0a";
+          });
+
+          var url =
+            "https://wa.me/+62" + no_hp + "?text=" + "*" + title + "*" + "%0a" + "_*" + line + "*_" + "%0a" + "*" + tgl_produksi + "*" + "%0a" + "%0a" + "_" + sku + "_" + total_produksi + "%0a" + "%0a" + hasilProduksi + "%0a" + noted;
+
+          window.open(url, "_blank").focus();
+        });
+      });
+    </script>
+  </body>
+</html>
