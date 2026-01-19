@@ -222,7 +222,7 @@
                     </select>
                   </div>
                   <div class="col-lg-12">
-                    <button type="button" class="btn btn-dark" id="buttonSku">Sumbit</button>
+                    <button type="button" class="btn btn-dark" id="buttonSKU">Sumbit</button>
                   </div>
                 </div>
               </div>
@@ -417,7 +417,7 @@
             persen = Math.round((jumlahCar / 1666) * 100);
           }
           
-          // ✅ Tambahkan logika penilaian berdasarkan persen
+          
           
           total += Number(jumlahCar);
           var formatJumlahCar = jumlahCar.toLocaleString("en-US").replace(",", ".");
@@ -539,7 +539,7 @@
 
         $(".result").html(showData(line7));
 
-        $("#buttonSku").on("click", function () {
+        $("#buttonSKU").on("click", function () {
           var inputShift = $("#input-shift").val();
           var inputSku = $("#input-sku").val();
           var inputProduk = $("#input-produk").val();
