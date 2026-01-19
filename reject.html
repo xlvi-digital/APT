@@ -169,7 +169,7 @@
                 <select class="form-select form-select border-success" id="jenis" style="border-radius: 5px; font-size: 1rem">
                   <option value="3000">3L</option>
                   <option value="5000">5L</option>
-                  <option value="1500ml">1500ml</option>
+                  <option value="1500">1500ml</option>
                 </select>
               </div>
             </div>
@@ -363,7 +363,7 @@
           // alert(option)
           if (jenis == "3000") {
             kgPreform += (preform * 1000) / 54;
-          } else if (jenis == "5000" {
+          } else if (jenis == "5000" ){
             kgPreform += (preform * 1000) / 100;
           }else {
             kgPreform += (preform * 1000) / 27
@@ -377,7 +377,7 @@
           // alert(option)
           if (jenis == "3000") {
             kgFresh += (Fresh * 1000) / 54;
-          } else if (jenis == "5000" {
+          } else if (jenis == "5000") {
             kgFresh += (Fresh * 1000) / 100;
           }else {
             kgFresh += (Fresh * 1000) / 27
@@ -391,7 +391,7 @@
           // alert(option)
           if (jenis == "3000") {
             kgIsi += (Isi * 1000) / 54;
-          } else if (jenis == "5000" {
+          } else if (jenis == "5000" ){
             kgIsi += (Isi * 1000) / 100;
           }else {
             kgIsi += (Isi * 1000) / 27
@@ -438,7 +438,7 @@
           var Cap = $(this).val().replace(",", "");
           // alert(option)
 
-          if(jenis == ("3000") && jenis == (5000))
+          if(jenis == ("3000") || jenis == (5000))
           {
             kgCap += (Cap * 1000) / 3.2;
           }else{
