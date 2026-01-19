@@ -169,6 +169,7 @@
                 <select class="form-select form-select border-success" id="jenis" style="border-radius: 5px; font-size: 1rem">
                   <option value="3000">3L</option>
                   <option value="5000">5L</option>
+                  <option value="1500ml">1500ml</option>
                 </select>
               </div>
             </div>
@@ -362,8 +363,10 @@
           // alert(option)
           if (jenis == "3000") {
             kgPreform += (preform * 1000) / 54;
-          } else {
-            kgPreform += (preform * 1000) / 100;
+          } elseif (jenis == "5000" {
+            kgPreform += (Preform * 1000) / 100;
+          }else {
+            kgPreform += (Preform * 27) / 100
           }
 
           // totalKgPreform += parseFloat(sum);
@@ -374,8 +377,10 @@
           // alert(option)
           if (jenis == "3000") {
             kgFresh += (Fresh * 1000) / 54;
-          } else {
+          } elseif (jenis == "5000" {
             kgFresh += (Fresh * 1000) / 100;
+          }else {
+            kgFresh += (Fresh * 27) / 100
           }
 
           // totalKgFresh += parseFloat(sum);
@@ -386,8 +391,10 @@
           // alert(option)
           if (jenis == "3000") {
             kgIsi += (Isi * 1000) / 54;
-          } else {
+          } elseif (jenis == "5000" {
             kgIsi += (Isi * 1000) / 100;
+          }else {
+            kgIsi += (Isi * 27) / 100
           }
 
           // totalKgIsi += parseFloat(sum);
@@ -430,7 +437,14 @@
           var Cap = $(this).val().replace(",", "");
           // alert(option)
 
-          kgCap += (Cap * 1000) / 3.2;
+          if(jenis == ("3000") && jenis == (5000))
+          {
+            kgCap += (Cap * 1000) / 3.2;
+          }else{
+            kgCap += (Cap * 1000) / 1.74;
+          }
+
+          
 
           // totalKgCap += parseFloat(sum);
           totalPcsCap += Number(Cap);
