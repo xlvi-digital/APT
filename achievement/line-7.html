@@ -215,9 +215,10 @@
                   <div class="col-md-6 mb-2">
                     <select class="form-select sku" id="input-sku" name="sku" style="border-radius: 5px; font-size: 1rem">
                       <option selected value="sku">Pilih SKU</option>
-                      <option value="Promo">Promo</option>
+                      <option value="Promo_Bola">Promo Bola</option>
+                      <option value="Promo">Promo </option>
                       <option value="Reguler">Reguler</option>
-                      <option value="Reguler_GT">Reguler GT</option>
+                      <option value="Reguler_Bola">Reguler Bola</option>
                     </select>
                   </div>
                   <div class="col-lg-12">
@@ -539,13 +540,15 @@
         $(".result").html(showData(line7));
 
         $("#buttonSku").on("click", function () {
-          alert("error");
           var inputShift = $("#input-shift").val();
           var inputSku = $("#input-sku").val();
           var inputProduk = $("#input-produk").val();
 
-          if (sku == "Reguler_GT") {
-            sku = "Reguler GT";
+          if (sku == "Reguler_Bola") {
+            sku = "Reguler Bola";
+          }
+          if (sku == "Promo_Bola") {
+            sku = "Promo Bola";
           }
           var tgl = "";
 
