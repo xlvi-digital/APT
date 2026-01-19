@@ -363,10 +363,10 @@
           // alert(option)
           if (jenis == "3000") {
             kgPreform += (preform * 1000) / 54;
-          } elseif (jenis == "5000" {
+          } else if (jenis == "5000" {
             kgPreform += (preform * 1000) / 100;
           }else {
-            kgPreform += (preform * 27) / 100
+            kgPreform += (preform * 1000) / 27
           }
 
           // totalKgPreform += parseFloat(sum);
@@ -377,10 +377,10 @@
           // alert(option)
           if (jenis == "3000") {
             kgFresh += (Fresh * 1000) / 54;
-          } elseif (jenis == "5000" {
+          } else if (jenis == "5000" {
             kgFresh += (Fresh * 1000) / 100;
           }else {
-            kgFresh += (Fresh * 27) / 100
+            kgFresh += (Fresh * 1000) / 27
           }
 
           // totalKgFresh += parseFloat(sum);
@@ -391,10 +391,10 @@
           // alert(option)
           if (jenis == "3000") {
             kgIsi += (Isi * 1000) / 54;
-          } elseif (jenis == "5000" {
+          } else if (jenis == "5000" {
             kgIsi += (Isi * 1000) / 100;
           }else {
-            kgIsi += (Isi * 27) / 100
+            kgIsi += (Isi * 1000) / 27
           }
 
           // totalKgIsi += parseFloat(sum);
@@ -433,6 +433,7 @@
       $("#button-Cap").on("click", function () {
         var kgCap = 0;
         var totalPcsCap = 0;
+        var jenis = $(#jenis).val()
         $(".Cap").each(function () {
           var Cap = $(this).val().replace(",", "");
           // alert(option)
