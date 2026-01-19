@@ -399,6 +399,19 @@
 
           persen = Math.round((jumlahCar / 2083) * 100);
 
+          let grade = "";
+          if (persen >= 90) {
+            grade = "(A)";
+          } else if (persen >= 85) {
+            grade = "(B)";
+          } else if (persen >= 82.5) {
+            grade = "(C)";
+          } else if (persen >= 80) {
+            grade = "(D)";
+          } else {
+            grade = "(E)";
+          }
+          
           total += Number(jumlahCar);
           var formatJumlahCar = jumlahCar.toLocaleString("en-US").replace(",", ".");
           formatTotal = total.toLocaleString("en-US").replace(",", ".");
@@ -407,7 +420,7 @@
           var jamAkhir = item.jam_akhir.replace(":", "."); // Mengganti ":" dengan "."
           row += `
               <p id="hasil_produksi_${index}" class="hasil_produksi">
-                ${jamAwal}-${jamAkhir} = ${formatJumlahCar} car ${persen}% 
+                ${jamAwal}-${jamAkhir} = ${formatJumlahCar} car ${persen}% ${grade}
                 <button onclick="deleteData(${index})" class="btn btn-danger btn-sm mb-2">
                 Hapus
                 </button>
