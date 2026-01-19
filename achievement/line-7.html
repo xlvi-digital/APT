@@ -392,6 +392,8 @@
         var buffer = $("#buffer").val();
         var minus = $("#minus").val();
 
+        
+
         line7.forEach(function (item, index) {
           if (produk == "1500ml") {
             hasil = item["akhir"] - item["awal"];
@@ -413,6 +415,21 @@
           } else {
             persen = Math.round((jumlahCar / 1666) * 100);
           }
+
+          
+          // ✅ Tambahkan logika penilaian berdasarkan persen
+          let grade = "";
+          if (persen >= 92) {
+            grade = "(A)";
+          } else if (persen >= 88.5) {
+            grade = "(B)";
+          } else if (persen >= 87.5) {
+            grade = "(C)";
+          } else if (persen >= 86) {
+            grade = "(D)";
+          } else {
+            grade = "(E)";
+          }
           total += Number(jumlahCar);
           var formatJumlahCar = jumlahCar.toLocaleString("en-US").replace(",", ".");
           formatTotal = total.toLocaleString("en-US").replace(",", ".");
@@ -421,7 +438,7 @@
           var jamAkhir = item.jam_akhir.replace(":", "."); // Mengganti ":" dengan "."
           row += `
               <p id="hasil_produksi_${index}" class="hasil_produksi">
-                ${jamAwal}-${jamAkhir} = ${formatJumlahCar} car ${persen}% 
+                ${jamAwal}-${jamAkhir} = ${formatJumlahCar} car ${persen}% ${grade}
                 <button onclick="deleteData(${index})" class="btn btn-danger btn-sm mb-2">
                 Hapus
                 </button>
@@ -447,6 +464,8 @@
           row += `<br/>`;
           row += `<b id='noted'>${note}</b>`;
         }
+
+        row += `
 
         if (line7.length == 0) {
           return (row = `<h1>
@@ -643,7 +662,7 @@
           });
 
           var url =
-            "https://wa.me/+62" + no_hp + "?text=" + "*" + title + "*" + "%0a" + "_*" + line + "*_" + "%0a" + "*" + tgl_produksi + "*" + "%0a" + "%0a" + "_" + sku + "_" + total_produksi + "%0a" + "%0a" + hasilProduksi + "%0a" + noted;
+            "https://wa.me/+62" + "?text=" + "*" + title + "*" + "%0a" + "_*" + line + "*_" + "%0a" + "*" + tgl_produksi + "*" + "%0a" + "%0a" + "_" + sku + "_" + total_produksi + "%0a" + "%0a" + hasilProduksi + "%0a" + noted;
 
           window.open(url, "_blank").focus();
         });
