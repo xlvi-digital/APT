@@ -169,7 +169,6 @@
                 <select class="form-select form-select border-success" id="jenis" style="border-radius: 5px; font-size: 1rem">
                   <option value="3000">3L</option>
                   <option value="5000">5L</option>
-                  
                 </select>
               </div>
             </div>
@@ -363,10 +362,9 @@
           // alert(option)
           if (jenis == "3000") {
             kgPreform += (preform * 1000) / 54;
-          }else{
+          } else {
             kgPreform += (preform * 1000) / 100;
           }
-
           // totalKgPreform += parseFloat(sum);
           totalPcsPreform += Number(preform);
         });
@@ -375,7 +373,7 @@
           // alert(option)
           if (jenis == "3000") {
             kgFresh += (Fresh * 1000) / 54;
-          }else{
+          } else {
             kgFresh += (Fresh * 1000) / 100;
           }
 
@@ -387,7 +385,7 @@
           // alert(option)
           if (jenis == "3000") {
             kgIsi += (Isi * 1000) / 54;
-          }else{
+          } else {
             kgIsi += (Isi * 1000) / 100;
           }
 
@@ -427,13 +425,11 @@
       $("#button-Cap").on("click", function () {
         var kgCap = 0;
         var totalPcsCap = 0;
-        var jenis = $(#jenis).val()
         $(".Cap").each(function () {
           var Cap = $(this).val().replace(",", "");
           // alert(option)
 
-            kgCap += (Cap * 1000) / 3.2;
-          
+          kgCap += (Cap * 1000) / 3.2;
 
           // totalKgCap += parseFloat(sum);
           totalPcsCap += Number(Cap);
@@ -456,74 +452,4 @@
           weekday: "long",
           year: "numeric",
           month: "long",
-          day: "numeric",
-        };
-        var formattedDate = inputTanggal.toLocaleDateString("id-ID", options);
-        document.getElementById("tgl").textContent = formattedDate;
-      });
-    </script>
-
-    <script>
-      $("#wa").on("click", function () {
-        var shift = document.getElementById("shift").value; // Gantilah dengan nilai sesuai kebutuhan
-        var jenis = document.getElementById("jenis").value; // Gantilah dengan nilai sesuai kebutuhan
-        var tgl = $("#tgl").text(); // Gantilah dengan nilai sesuai kebutuhan
-        // Objek untuk menyimpan data variabel dan pesan
-
-        var message = "*Data Reject peShift, PET, HPDE, & dan Karton*" + "\n" + "*" + tgl + "* " + "\n\n" + "*Line 6 (" + jenis + ")*" + "\n" + "_Shift " + shift + "_" + "\n\n";
-
-        // var blowing = "*Mesin Blowing*";
-        var preform = document.getElementById("dataPreform").innerHTML;
-        var Fresh = document.getElementById("dataFresh").innerHTML;
-        var Isi = document.getElementById("dataIsi").innerHTML;
-        var Cap = document.getElementById("dataCap").innerHTML;
-        var Kurang = document.getElementById("dataKurang").innerHTML;
-        var Press = document.getElementById("dataPress").innerHTML;
-        var Terlipat = document.getElementById("dataTerlipat").innerHTML;
-        var Putus = document.getElementById("dataPutus").innerHTML;
-        var Nangkring = document.getElementById("dataNangkring").innerHTML;
-        var total = document.getElementById("dataTotal").innerHTML;
-        var Karton = document.getElementById("dataKarton").innerHTML;
-
-        message +=
-          "\nReject (Preform Blowing) : " +
-          preform +
-          " Pcs\n" +
-          "Reject (Botol Fresh) : " +
-          Fresh +
-          " Pcs\n" +
-          "Reject (Botol Isi): " +
-          Isi +
-          " Pcs\n\n " +
-          "Volume Kurang : " +
-          Kurang +
-          " Pcs\n" +
-          "High Press / Low Press : " +
-          Press +
-          " Pcs\n" +
-          "TE Terlipat : " +
-          Terlipat +
-          " Pcs\n" +
-          "Bridge Putus : " +
-          Putus +
-          " Pcs\n" +
-          "Tutup Nangkring : " +
-          Nangkring +
-          " Pcs\n\n" +
-          "*Total Reject PET : " +
-          total +
-          " Pcs*\n" +
-          "*Total HDPE (Cap) : " +
-          Cap +
-          " Pcs*\n" +
-          "*Reject Karton Lbr : " +
-          Karton +
-          " Lbr*\n";
-
-        var url = "https://wa.me/" + "?text=" + encodeURIComponent(message);
-
-        window.open(url, "_blank").focus();
-      });
-    </script>
-  </body>
-</html>
+          day
