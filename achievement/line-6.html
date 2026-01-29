@@ -531,6 +531,15 @@
         return line6;
       }
 
+      function tambahSatuJam(jam) {
+  if (!jam) return "";
+
+  let [hh, mm] = jam.split(":").map(Number);
+  hh = (hh + 1) % 24; // aman lewat jam 24
+
+  return String(hh).padStart(2, "0") + ":" + String(mm).padStart(2, "0");
+      }
+
       /*************************************************
        * SHOW DATA
        *************************************************/
@@ -655,16 +664,25 @@ ${rejectText}`;
         });
 
         $("#formTransaksi").on("submit", function (e) {
-          e.preventDefault();
-          line6 = insert();
-          $(".result").html(showData(line6));
+  e.preventDefault();
 
-          // RESET TERKONTROL
-          $("#awal").val($("#akhir").val());
-          $("#akhir").val("");
-          $("#weigher").val(0);
-          $("#receh").val("");
-        });
+  insert(); // simpan data
+  line6 = JSON.parse(localStorage.getItem("line6")) || [];
+  $(".result").html(showData(line6));
+
+  // === AUTO TAMBAH 1 JAM ===
+  const jamAwal = $("#jam_awal").val();
+  const jamAkhir = $("#jam_akhir").val();
+
+  $("#jam_awal").val(tambahSatuJam(jamAwal));
+  $("#jam_akhir").val(tambahSatuJam(jamAkhir));
+
+  // reset field lain
+  $("#awal").val($("#akhir").val());
+  $("#akhir").val("");
+  $("#receh").val("");
+  $("#weigher").val(0);
+});
         $("#btnWhatsapp").on("click", function () {
           const text = buildWhatsappText();
           if (!text) return;
