@@ -212,8 +212,8 @@
                       <option selected value="sku">Pilih SKU</option>
                       <option value="Promo">Promo</option>
                       <option value="Reguler">Reguler</option>
-                      <option value="Reguler_GT">Reguler GT</option>
-                      <option value="Phill_Reguler">Phill Reguler</option>
+                      <option value="Reguler_Bola">Reguler Bola</option>
+                      <option value="Promo_Bola">Promo Bola</option>
                     </select>
                   </div>
                   <div class="col-lg-12">
@@ -399,6 +399,19 @@
 
           persen = Math.round((jumlahCar / 3000) * 100);
 
+          let grade = "";
+          if (persen >= 92) {
+            grade = "(A)";
+          } else if (persen >= 88.5) {
+            grade = "(B)";
+          } else if (persen >= 87.5) {
+            grade = "(C)";
+          } else if (persen >= 86) {
+            grade = "(D)";
+          } else {
+            grade = "(E)";
+          }
+          
           total += Number(jumlahCar);
           var formatJumlahCar = jumlahCar.toLocaleString("en-US").replace(",", ".");
           formatTotal = total.toLocaleString("en-US").replace(",", ".");
@@ -407,7 +420,7 @@
           var jamAkhir = item.jam_akhir.replace(":", "."); // Mengganti ":" dengan "."
           row += `
               <p id="hasil_produksi_${index}" class="hasil_produksi">
-                ${jamAwal}-${jamAkhir} = ${formatJumlahCar} car ${persen}% 
+                ${jamAwal}-${jamAkhir} = ${formatJumlahCar} car ${persen}% ${grade}
                 <button onclick="deleteData(${index})" class="btn btn-danger btn-sm mb-2">
                 Hapus
                 </button>
@@ -509,8 +522,12 @@
           var inputSku = $("#input-sku").val();
           var inputProduk = $("#input-produk").val();
 
-          if (sku == "Reguler_GT") {
-            sku = "Reguler GT";
+          if (sku == "Reguler_Bola") {
+            sku = "Reguler Bola";
+          }
+
+          if (sku == "Promo_Bola") {
+            sku = "Promo Bola";
           }
           var tgl = "";
 
@@ -608,14 +625,30 @@
           var noted = $("#noted").text();
           var sku = $("#sku_running").text();
           var hasilProduksi = "";
+
+          
+          // ✅ Ambil teks tanpa tombol hapus
           $(".hasil_produksi").each(function () {
-            var text = $(this).text().trim();
-            var withoutDataAfterPercentage = text.substring(0, text.indexOf("%") + 1); // Mengambil teks hingga tanda '%' termasuk '%'
-            hasilProduksi += withoutDataAfterPercentage + "%0a";
+            var clone = $(this).clone(); // duplikat elemen
+            clone.find("button").remove(); // hapus tombol hapus
+            var text = clone.text().trim(); // ambil teks bersih
+            hasilProduksi += text + "%0a";
           });
 
+          // ✅ Gunakan encodeURIComponent agar teks aman dikirim
           var url =
-            "https://wa.me/+62" + no_hp + "?text=" + "*" + title + "*" + "%0a" + "_*" + line + "*_" + "%0a" + "*" + tgl_produksi + "*" + "%0a" + "%0a" + "_" + sku + "_" + total_produksi + "%0a" + "%0a" + hasilProduksi + "%0a" + noted;
+            "https://wa.me/"+
+            "?text=" +
+            encodeURIComponent(
+              `*${title}*\n_*${line}*_\n*${tgl_produksi}*\n\n_${sku}_ ${total_produksi}\n\n${$(".hasil_produksi")
+                .map(function () {
+                  var clone = $(this).clone();
+                  clone.find("button").remove();
+                  return clone.text().trim();
+                })
+                .get()
+                .join("\n")}\n\n${noted}`
+            );
 
           window.open(url, "_blank").focus();
         });

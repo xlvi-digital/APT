@@ -669,8 +669,71 @@ ${rejectText}`;
           const text = buildWhatsappText();
           if (!text) return;
 
+<<<<<<< HEAD
           const url = "https://wa.me/?text=" + encodeURIComponent(text);
           window.open(url, "_blank");
+=======
+        // meriset
+        $("#delete").on("click", function (e) {
+          e.preventDefault();
+          Swal.fire({
+            title: "Are you sure?",
+            text: "Untuk Menghapus semua data?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              line6 = filterTransaksi = [];
+              localStorage.removeItem("line6");
+              $(".result").html(showData(line6));
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+            }
+          });
+        });
+
+        //
+        $("#wa").on("click", function () {
+          var title = $("#title").text();
+          var line = $("#line_running").text();
+          var tgl_produksi = $("#tgl_produksi").text();
+          var total_produksi = $("#total_produksi").text();
+          var no_hp = $("#no_hp").val();
+          var noted = $("#noted").text();
+          var sku = $("#sku_running").text();
+          var hasilProduksi = "";
+
+          // ✅ Ambil teks tanpa tombol hapus
+          $(".hasil_produksi").each(function () {
+            var clone = $(this).clone(); // duplikat elemen
+            clone.find("button").remove(); // hapus tombol hapus
+            var text = clone.text().trim(); // ambil teks bersih
+            hasilProduksi += text + "%0a";
+          });
+
+          // ✅ Gunakan encodeURIComponent agar teks aman dikirim
+          var url =
+            "https://wa.me/"+
+            "?text=" +
+            encodeURIComponent(
+              `*${title}*\n_*${line}*_\n*${tgl_produksi}*\n\n_${sku}_ ${total_produksi}\n\n${$(".hasil_produksi")
+                .map(function () {
+                  var clone = $(this).clone();
+                  clone.find("button").remove();
+                  return clone.text().trim();
+                })
+                .get()
+                .join("\n")}\n\n${noted}`
+            );
+
+          window.open(url, "_blank").focus();
+>>>>>>> 3d53343434e9a42523a9d06bfa82436a466d0815
         });
       });
     </script>
