@@ -667,21 +667,28 @@ ${rejectText}`;
   e.preventDefault();
 
   insert(); // simpan data
+          // simpan jam terakhir ke localStorage
+localStorage.setItem(
+  "lastJamLine6",
+  JSON.stringify({
+    jam_awal: $("#jam_awal").val(),
+    jam_akhir: $("#jam_akhir").val(),
+  })
+);
   line6 = JSON.parse(localStorage.getItem("line6")) || [];
   $(".result").html(showData(line6));
 
-  // === AUTO TAMBAH 1 JAM ===
-  const jamAwal = $("#jam_awal").val();
-  const jamAkhir = $("#jam_akhir").val();
+const nextJamAwal = tambahSatuJam($("#jam_awal").val());
+const nextJamAkhir = tambahSatuJam($("#jam_akhir").val());
 
-  $("#jam_awal").val(tambahSatuJam(jamAwal));
-  $("#jam_akhir").val(tambahSatuJam(jamAkhir));
+$("#jam_awal").val(nextJamAwal);
+$("#jam_akhir").val(nextJamAkhir);
 
-  // reset field lain
-  $("#awal").val($("#akhir").val());
-  $("#akhir").val("");
-  $("#receh").val("");
-  $("#weigher").val(0);
+// reset field lain
+$("#awal").val($("#akhir").val());
+$("#akhir").val("");
+$("#receh").val("");
+$("#weigher").val(0);
 });
         $("#btnWhatsapp").on("click", function () {
           const text = buildWhatsappText();
@@ -689,6 +696,15 @@ ${rejectText}`;
           const url = "https://wa.me/?text=" + encodeURIComponent(text);
           window.open(url, "_blank");
         });
+        const lastJam = JSON.parse(localStorage.getItem("lastJamLine6"));
+
+if (lastJam) {
+  const jamAwalBaru = tambahSatuJam(lastJam.jam_akhir);
+  const jamAkhirBaru = tambahSatuJam(jamAwalBaru);
+
+  $("#jam_awal").val(jamAwalBaru);
+  $("#jam_akhir").val(jamAkhirBaru);
+}
       });
     </script>
   </body>
