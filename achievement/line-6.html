@@ -648,60 +648,82 @@ ${rejectText}`;
         return message.trim();
       }
 
-      /*************************************************
-       * INIT
-       *************************************************/
-      $(document).ready(function () {
-        loadHeader();
-        loadLastInput();
+/*************************************************
+ * INIT
+ *************************************************/
+$(document).ready(function () {
+  loadHeader();
+  loadLastInput();
 
-        let line6 = JSON.parse(localStorage.getItem(DATA_KEY)) || [];
-        $(".result").html(showData(line6));
-
-        $("#input-shift, #input_tgl, #input-produk, #input-sku").on("change", function () {
-          saveHeader();
-          $(".result").html(showData(line6));
-        });
-
-        $("#formTransaksi").on("submit", function (e) {
-  e.preventDefault();
-
-  insert(); // simpan data
-          // simpan jam terakhir ke localStorage
-localStorage.setItem(
-  "lastJamLine6",
-  JSON.stringify({
-    jam_akhir: $("#jam_akhir").val(),
-  })
-);
-  line6 = JSON.parse(localStorage.getItem("line6")) || [];
+  let line6 = JSON.parse(localStorage.getItem(DATA_KEY)) || [];
   $(".result").html(showData(line6));
 
-const nextJamAwal = tambahSatuJam($("#jam_awal").val());
-const nextJamAkhir = tambahSatuJam($("#jam_akhir").val());
+  // ============================
+  // LOAD JAM SAAT REFRESH
+  // ============================
+  const lastJam = JSON.parse(localStorage.getItem("lastJamLine6"));
 
-$("#jam_awal").val(nextJamAwal);
-$("#jam_akhir").val(nextJamAkhir);
+  if (lastJam && lastJam.jam_akhir) {
+    $("#jam_awal").val(lastJam.jam_akhir);
+    $("#jam_akhir").val(tambahSatuJam(lastJam.jam_akhir));
+  }
 
-// reset field lain
-$("#awal").val($("#akhir").val());
-$("#akhir").val("");
-$("#receh").val("");
-$("#weigher").val(0);
+  // ============================
+  // HEADER CHANGE
+  // ============================
+  $("#input-shift, #input_tgl, #input-produk, #input-sku").on("change", function () {
+    saveHeader();
+    $(".result").html(showData(line6));
+  });
+
+  // ============================
+  // SUBMIT DATA
+  // ============================
+  $("#formTransaksi").on("submit", function (e) {
+    e.preventDefault();
+
+    insert();
+
+    // simpan JAM AKHIR TERAKHIR
+    localStorage.setItem(
+      "lastJamLine6",
+      JSON.stringify({
+        jam_akhir: $("#jam_akhir").val(),
+      })
+    );
+
+    line6 = JSON.parse(localStorage.getItem(DATA_KEY)) || [];
+    $(".result").html(showData(line6));
+
+    // ============================
+    // AUTO +1 JAM
+    // ============================
+    const nextJamAwal = tambahSatuJam($("#jam_awal").val());
+    const nextJamAkhir = tambahSatuJam($("#jam_akhir").val());
+
+    $("#jam_awal").val(nextJamAwal);
+    $("#jam_akhir").val(nextJamAkhir);
+
+    // ============================
+    // RESET FIELD LAIN
+    // ============================
+    $("#awal").val($("#akhir").val());
+    $("#akhir").val("");
+    $("#receh").val("");
+    $("#weigher").val(0);
+  });
+
+  // ============================
+  // WHATSAPP
+  // ============================
+  $("#btnWhatsapp").on("click", function () {
+    const text = buildWhatsappText();
+    if (!text) return;
+
+    const url = "https://wa.me/?text=" + encodeURIComponent(text);
+    window.open(url, "_blank");
+  });
 });
-        $("#btnWhatsapp").on("click", function () {
-          const text = buildWhatsappText();
-          if (!text) return;
-          const url = "https://wa.me/?text=" + encodeURIComponent(text);
-          window.open(url, "_blank");
-        });
-const lastJamAkhir = localStorage.getItem("lastJamAkhirLine6");
-
-if (lastJamAkhir) {
-  $("#jam_awal").val(lastJamAkhir); // ambil jam akhir terakhir
-  $("#jam_akhir").val(tambahSatuJam(lastJamAkhir)); // +1 jam
-}
-      });
     </script>
   </body>
 </html>
