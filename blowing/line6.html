@@ -379,213 +379,209 @@
     <script src="../js/jquery.js"></script>
     <script src="../js/dashboard.js"></script>
 
-    <script>
-      function formatCurrency(input) {
-        // Hapus karakter selain digit
-        let value = input.value.replace(/[^,\d]/g, "");
+ <script>
+/* ======================================================
+   CONFIG
+====================================================== */
+const STORAGE_KEY = "LINE6_PRODUKSI";
 
-        // Pisahkan angka dan desimal
-        let parts = value.split(",");
+/* ======================================================
+   UTIL
+====================================================== */
+function saveData(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
 
-        // Format angka dengan ribuan
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+function getData() {
+  return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
+    jam: {},
+    counter: {},
+    parameter: {},
+    reject: {},
+    issues: []
+  };
+}
 
-        // Gabungkan angka dan desimal
-        input.value = parts.join(",");
+/* ======================================================
+   COUNTER & JAM
+====================================================== */
+$("#button-counter").on("click", function () {
 
-        input.setAttribute("data-original-value", value.replace(/\./g, ""));
-      }
+  let data = getData();
 
-      function tambahIssue() {
-        // Buat elemen container baru untuk input group
-        const newInputGroup = document.createElement("div");
-        newInputGroup.className = "input-group mt-2"; // Menambahkan margin top
+  const jamAwal = $("#jam-awal").val();
+  const jamAkhir = $("#jam-akhir").val();
 
-        // Buat textarea baru
-        const newTextArea = document.createElement("textarea");
-        newTextArea.type = "text";
-        newTextArea.className = "form-control";
-        newTextArea.placeholder = "issue";
+  const counterAwal = Number($("#counter-awal").val()) || 0;
+  const counterAkhir = Number($("#counter-akhir").val()) || 0;
 
-        // Buat div untuk input group text dan input time
-        const newInputGroupText = document.createElement("div");
-        newInputGroupText.className = "input-group-text";
+  let counter = counterAkhir - counterAwal;
 
-        const newSpan = document.createElement("span");
-        newSpan.className = "input-group-text";
-        newSpan.innerText = "Lama Downtime";
+  // SIMPAN
+  data.jam = { jamAwal, jamAkhir };
+  data.counter = {
+    counterAwal,
+    counterAkhir,
+    counter
+  };
 
-        const newInputTime = document.createElement("input");
-        newInputTime.type = "number";
-        newInputTime.className = "form-control";
+  saveData(data);
+  alert(counterAwal)
+  // TAMPIL
+  $("#jam_awal").text(jamAwal);
+  $("#jam_akhir").text(jamAkhir);
+  $("#counter").text(counter.toLocaleString("de-DE"));
+  $("#total-counter").text(counterAkhir.toLocaleString("de-DE"));
 
-        // Masukkan elemen-elemen ke dalam input group text
-        newInputGroupText.appendChild(newSpan);
-        newInputGroupText.appendChild(newInputTime);
+  // AUTO +1 JAM
+  let jam = (parseInt(jamAkhir) + 1) % 24;
+  $("#jam-awal").val(jamAkhir);
+  $("#jam-akhir").val(jam);
 
-        // Masukkan textarea dan input group text ke dalam input group
-        newInputGroup.appendChild(newTextArea);
-        newInputGroup.appendChild(newInputGroupText);
+  // PINDAHKAN COUNTER
+  $("#counter-awal")
+    .val(counterAkhir.toLocaleString("de-DE"))
+    .attr("data-original-value", counterAkhir);
 
-        // Tambahkan input group baru ke container form
-        const formContainer = document.getElementById("issue2");
-        formContainer.appendChild(newInputGroup);
-      }
+  $("#counter-akhir").val("").attr("data-original-value", "");
+});
 
-    
-    </script>
-    <script>
-      $("#button-counter").on("click", function () {
-        var jamAwal = $("#jam-awal").val();
-        var jamAkhir = $("#jam-akhir").val();
-        var counterAwal = parseInt(document.getElementById("counter-awal").getAttribute("data-original-value")) || 0;
-        var counterAkhir = parseInt(document.getElementById("counter-akhir").getAttribute("data-original-value")) || 0;
 
-        var counter = counterAkhir - counterAwal;
+/* ======================================================
+   PARAMETER MESIN
+====================================================== */
+$("#button-parameter").on("click", function () {
 
-        $("#jam_awal").text(jamAwal);
-        $("#jam_akhir").text(jamAkhir);
-        $("#counter").text(counter.toLocaleString("de-DE"));
-        $("#total-counter").text(counterAkhir.toLocaleString("de-DE"));
-        // alert(counterAkhir);
+  let data = getData();
 
-        // Tambah 1 jam ke jamAkhir
-        var jam = parseInt(jamAkhir); // Ambil nilai jam dan konversi ke integer
+  data.parameter = {
+    highpress: $("#input-highpress").val(),
+    lowpress: $("#input-lowpress").val(),
+    oven: $("#input-highpress").val(),
+    chiler: $("#input-highpress").val(),
+    ahu: $("#input-AHU").val(),
+    dosing: $("#input-dosing").val(),
+    rinsing: $("#input-rinsing").val(),
+    drain: $("#input-drain").val()
+  };
 
-        // Tambah 1 jam
-        jam = (jam + 1) % 24; // Pastikan jam tidak melebihi 23
+  // tampilkan
+  $("#highpress").text(data.parameter.highpress);
+  $("#Lowpress").text(data.parameter.lowpress);
+  $("#Oven").text(data.parameter.oven);
+  $("#Chiler").text(data.parameter.chiler);
+  $("#AHU").text(data.parameter.ahu);
+  $("#Dosing").text(data.parameter.dosing);
+  $("#Rinsing").text(data.parameter.rinsing);
+  $("#Drain").text(data.parameter.drain);
 
-        // Set nilai baru ke input jam-akhir
-        $("#jam-akhir").val(jam);
+  saveData(data);
+});
 
-        // Update input lain
-        $("#jam-awal").val(jamAkhir);
-        $("#counter-awal").val(counterAkhir.toLocaleString("de-DE"));
-        $("#counter-akhir").val(null);
-      });
-    </script>
-    <script>
-      $("#button-parameter").on("click", function () {
-        var highpress = $("#input-highpress").val();
-        var Lowpress = $("#input-lowpress").val();
-        var Oven = $("#input-highpress").val();
-        var Chiler = $("#input-highpress").val();
-        var AHU = $("#input-AHU").val();
-        var Dosing = $("#input-dosing").val();
-        var Rinsing = $("#input-rinsing").val();
-        var Drain = $("#input-drain").val();
+/* ======================================================
+   REJECT
+====================================================== */
+$("#button-reject").on("click", function () {
 
-        $("#highpress").text(highpress);
-        $("#Lowpress").text(Lowpress);
-        $("#Oven").text(Oven);
-        $("#Chiler").text(Chiler);
-        $("#AHU").text(AHU);
-        $("#Dosing").text(Dosing);
-        $("#Rinsing").text(Rinsing);
-        $("#Drain").text(Drain);
-      });
-    </script>
+  let data = getData();
 
-    <script>
-      $("#button-reject").on("click", function() {
-        var Preform = $("#input-prefrom").val();
-        var Botol = $("#input-Botol").val();
+  data.reject = {
+    preform: $("#input-prefrom").val(),
+    botol: $("#input-Botol").val()
+  };
 
-        $("#Preform").text(Preform);
-        $("#Botol").text(Botol);
+  $("#Preform").text(data.reject.preform);
+  $("#Botol").text(data.reject.botol);
 
-      });
+  saveData(data);
+});
 
-      $("#button-issue").on("click", function() {
-        const issueList = document.getElementById("issueList");
+/* ======================================================
+   ISSUE (TERMASUK DINAMIS)
+====================================================== */
+$("#button-issue").on("click", function () {
 
-        // Clear existing list items
-        issueList.innerHTML = '';
+  let data = getData();
+  data.issues = [];
 
-        // Get data from the initial input fields
-        const initialIssue = document.getElementById("input-issue").value;
-        const initialTime = document.getElementById("input-time").value;
+  const issueAwal = $("#input-issue").val();
+  const timeAwal = $("#input-time").val();
 
-        if (initialIssue || initialTime) {
-          const li = document.createElement("li");
-          li.innerHTML = ` ${initialIssue} <span>(${initialTime})</span>`;
-          issueList.appendChild(li);
-        }
+  if (issueAwal || timeAwal) {
+    data.issues.push({ issue: issueAwal, time: timeAwal });
+  }
 
-        // Get data from dynamically added input fields
-        const formContainer = document.getElementById("issue2");
-        const inputGroups = formContainer.getElementsByClassName("input-group");
+  $("#issue2 .input-group").each(function () {
+    data.issues.push({
+      issue: $(this).find("textarea").val(),
+      time: $(this).find("input").val()
+    });
+  });
 
-        for (let i = 0; i < inputGroups.length; i++) {
-          const textArea = inputGroups[i].querySelector("textarea").value;
-          const inputTime = inputGroups[i].querySelector("input[type='number']").value;
+  // tampilkan
+  $("#issueList").html("");
+  if (data.issues.length === 0) {
+    $("#issueList").html(`<li>No issue <span>(0)</span></li>`);
+  } else {
+    data.issues.forEach(i => {
+      $("#issueList").append(`<li>${i.issue} <span>(${i.time})</span></li>`);
+    });
+  }
 
-          const li = document.createElement("li");
-          li.innerHTML = ` ${textArea} <span>(${inputTime})</span>`;
+  saveData(data);
+});
 
-          issueList.appendChild(li);
-        }
+/* ======================================================
+   LOAD SAAT REFRESH
+====================================================== */
+$(document).ready(function () {
 
-        // If no issues were added, show the default message
-        if (!initialIssue && inputGroups.length === 0) {
-          const li = document.createElement("li");
-          li.id = "issue";
-          li.innerHTML = 'No issue <span id="time">(0)</span>';
-          issueList.appendChild(li);
-        }
-       }) 
-    </script>
+  const data = getData();
 
-<script>
-    function sendToWhatsApp() {
-      const jamAwal = document.getElementById('jam_awal').innerText;
-      const jamAkhir = document.getElementById('jam_akhir').innerText;
-      const counter = document.getElementById('counter').innerText;
-      const totalCounter = document.getElementById('total-counter').innerText;
-      const highpress = document.getElementById('highpress').innerText ;
-      const lowpress = document.getElementById('Lowpress').innerText ;
-      const oven = document.getElementById('Oven').innerText ;
-      const chiler = document.getElementById('Chiler').innerText ;
-      const ahu = document.getElementById('AHU').innerText ;
-      const dosing = document.getElementById('Dosing').innerText ;
-      const rinsing = document.getElementById('Rinsing').innerText ;
-      const drain = document.getElementById('Drain').innerText ;
-      const preform = document.getElementById('Preform').innerText ;
-      const botol = document.getElementById('Botol').innerText ;
-      const no_hp = document.getElementById('no_hp').value ;
+  // isi INPUT
+  $("#counter-awal")
+    .val((data.counter.counterAwal || 0).toLocaleString("de-DE"))
+    .attr("data-original-value", data.counter.counterAwal || 0);
 
-      // Get all issue list items
-      const issueList = document.getElementById('issueList').getElementsByTagName('li');
-      let issueData = "";
-      for (let i = 0; i < issueList.length; i++) {
-        issueData += `- ${issueList[i].innerText}\n`;
-      }
+  $("#counter-akhir")
+    .val((data.counter.counterAkhir || 0).toLocaleString("de-DE"))
+    .attr("data-original-value", data.counter.counterAkhir || 0);
 
-      // Construct the message
-      const message = `*LINE 6*\n` +
-        `${jamAwal}-${jamAkhir} = ${counter}\n` +
-        `Counter: ${totalCounter}\n\n` +
-        `Highpress: ${highpress}\n` +
-        `Lowpress: ${lowpress}\n` +
-        `Temp. Oven: ${oven}\n` +
-        `Temp. Chiler: ${chiler}\n` +
-        `Temp. AHU: ${ahu}\n` +
-        `Dosing: ${dosing}\n` +
-        `Rinsing: ${rinsing}\n` +
-        `Drain Feedtank: ${drain}\n` +
-        `R.Preform: ${preform}\n` +
-        `R.Botol: ${botol}\n\n` +
-        `*Issue:*\n${issueData}`;
+  // isi HASIL
+  $("#counter").text(
+    (data.counter.counter || 0).toLocaleString("de-DE")
+  );
 
-      // Encode the message for use in a URL
-      const encodedMessage = encodeURIComponent(message);
+  $("#total-counter").text(
+    (data.counter.counterAkhir || 0).toLocaleString("de-DE")
+  );
+  // parameter
+  if (data.parameter) {
+    $("#highpress").text(data.parameter.highpress || 0);
+    $("#Lowpress").text(data.parameter.lowpress || 0);
+    $("#Oven").text(data.parameter.oven || 0);
+    $("#Chiler").text(data.parameter.chiler || 0);
+    $("#AHU").text(data.parameter.ahu || 0);
+    $("#Dosing").text(data.parameter.dosing || 0);
+    $("#Rinsing").text(data.parameter.rinsing || 0);
+    $("#Drain").text(data.parameter.drain || 0);
+  }
 
-      // Create the WhatsApp URL
-      const whatsappUrl = "https://wa.me/+62" + no_hp + "?text=" + encodeURIComponent(message);
+  // reject
+  if (data.reject) {
+    $("#Preform").text(data.reject.preform || 0);
+    $("#Botol").text(data.reject.botol || 0);
+  }
 
-      // Open the WhatsApp URL
-      window.open(whatsappUrl, '_blank');
-    }
-  </script>
+  // issue
+  if (data.issues && data.issues.length) {
+    $("#issueList").html("");
+    data.issues.forEach(i => {
+      $("#issueList").append(`<li>${i.issue} <span>(${i.time})</span></li>`);
+    });
+  }
+});
+</script>
+
   </body>
 </html>
