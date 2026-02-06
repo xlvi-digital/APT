@@ -212,28 +212,28 @@
                 <div class="row g-2">
                   <div class="col-6">
                     <div class="form-floating">
-                      <input type="time" class="form-control" id="jam_awal" name="jam_awal" />
+                      <input type="time" class="form-control" id="jam_awal" name="jam_awal" required />
                       <label>Dari Jam</label>
                     </div>
                   </div>
 
                   <div class="col-6">
                     <div class="form-floating">
-                      <input type="time" class="form-control" id="jam_akhir" name="jam_akhir" />
+                      <input type="time" class="form-control" id="jam_akhir" name="jam_akhir" required />
                       <label>Sampai Jam</label>
                     </div>
                   </div>
 
                   <div class="col-6">
                     <div class="form-floating">
-                      <input type="number" class="form-control" id="awal" name="awal" />
+                      <input type="number" class="form-control" id="awal" name="awal" required />
                       <label>No Pallet Awal</label>
                     </div>
                   </div>
 
                   <div class="col-6">
                     <div class="form-floating">
-                      <input type="number" class="form-control" id="akhir" name="akhir" />
+                      <input type="number" class="form-control" id="akhir" name="akhir" required />
                       <label>No Pallet Akhir</label>
                     </div>
                   </div>
@@ -293,7 +293,7 @@
                 <button type="button" id="reset" class="btn btn-danger btn-sm rounded-pill px-2">Reset</button>
                 <button type="button" id="btnEditMode" class="btn btn-warning btn-sm rounded-pill px-2">Edit Data</button>
 
-                <button type="submit" id="submit" class="btn btn-primary btn-sm rounded-pill px-4">Submit</button>
+                <button type="submit" id="btnSubmit" class="btn btn-primary btn-sm rounded-pill px-4">Submit</button>
                 <button id="btnUpdateData" style="display: none" type="button" class="btn btn-outline-warning btn-sm rounded-pill px-4">Update Data</button>
               </div>
             </div>
@@ -407,7 +407,7 @@
         $("#note").val(item.note || "");
 
         $("#btnUpdateData").show();
-        $("#submit").hide();
+        $("#btnSubmit").hide();
         $("#btnEditMode").hide();
 
         editMode = false;
@@ -456,7 +456,7 @@
         editMode = false;
 
         $("#btnUpdateData").hide();
-        $("#submit").show();
+        $("#btnSubmit").show();
         $("#btnEditMode").show();
 
         $(".result").html(showData(data));
@@ -739,7 +739,7 @@ ${rejectText}`;
         });
 
         // ============================
-        // SUBMIT DATA
+        // btnSubmit DATA
         // ============================
         $("#formTransaksi").on("submit", function (e) {
           e.preventDefault();
@@ -773,6 +773,14 @@ ${rejectText}`;
           $("#akhir").val("");
           $("#receh").val("");
           $("#weigher").val(0);
+
+          Swal.fire({
+            icon: "success",
+            title: "Berhasil",
+            text: "Data produksi berhasil Ditambahkan.",
+            timer: 1500,
+            showConfirmButton: false,
+          });
         });
 
         // ============================
