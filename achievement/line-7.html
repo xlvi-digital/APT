@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -18,7 +18,7 @@
     <!-- Box Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
 
-    <!-- sweetalert2 -->
+    <!-- Sweetalert2 -->
     <link rel="stylesheet" href="../assets/dist/sweetalert2/sweetalert2.min.css" />
     <style>
       .bd-placeholder-img {
@@ -34,12 +34,15 @@
           font-size: 3.5rem;
         }
       }
+
       .b-example-divider {
         height: 3rem;
         background-color: rgba(0, 0, 0, 0.1);
         border: solid rgba(0, 0, 0, 0.15);
         border-width: 1px 0;
-        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1), inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+        box-shadow:
+          inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
       }
 
       .b-example-vr {
@@ -77,7 +80,7 @@
   </head>
   <body>
     <header class="navbar navbar-dark sticky-top bg-danger flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#" style="font-family: 'Agbalumo'; text-transform: uppercase">MY padamelan</a>
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#" style="font-family: &quot;Agbalumo&quot;; text-transform: uppercase">MY padamelan</a>
       <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -102,6 +105,7 @@
                 </a>
               </li>
             </ul>
+
             <h6 class="sidebar-heading align-items-center px-3 mt-3 mb-1 text-body-secondary text-uppercase">Line 6</h6>
             <ul class="nav flex-column">
               <li class="nav-item">
@@ -111,7 +115,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../blowing/line6.html">
+                <a class="nav-link" href="../blowing/line7.html">
                   <i class="bx bx-radio-circle-marked"></i>
                   Update Blowing
                 </a>
@@ -141,7 +145,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../blowing/line8.html">
+                <a class="nav-link" href="../blowing/line7.html">
                   <i class="bx bx-radio-circle-marked"></i>
                   Update Blowing
                 </a>
@@ -151,183 +155,149 @@
         </nav>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2 mb-2">Update Achievement</h1>
+            <h1 class="h4 mb-2">Update Achievement</h1>
           </div>
 
           <!-- Modal -->
           <form id="formTransaksi">
-            <div class="modal fade" id="whatapps" tabindex="-1" aria-labelledby="whatappsLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="whatappsLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <label for="no_hp">Masukan No Whatapps</label>
-                    <input type="number" name="no_hp" id="no_hp" class="form-control form-control-sm" />
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" id="wa" class="btn btn-success">Kirim</button>
-                  </div>
-                </div>
-              </div>
-            </div>
             <div class="card">
               <div class="card-body">
                 <div class="row text-center">
                   <div class="col-md-12">
-                    <h4 id="title">Hasil Produksi Shift <span id="shift">shift</span></h4>
-                    <h4 id="line_running"><i>LINE 7</i></h4>
-                    <h4 id="tgl_produksi"></h4>
-                    <i id="sku_running">Le Minerale <span id="produk">produk</span> <span id="sku">sku</span></i>
-                    <hr />
                     <div class="result"></div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="card">
-              <div class="card-header">
-                <h5 class="card-title">SKU</h5>
-              </div>
+            <div class="card mb-3">
+              <div class="card-header fw-bold">Identitas Produksi</div>
               <div class="card-body">
-                <div class="row form-sku">
-                  <div class="col-md-6 mb-2">
-                    <select class="form-select" id="input-shift" style="border-radius: 5px; font-size: 1rem">
-                      <option value="shift" selected>Shift</option>
+                <div class="row g-2">
+                  <div class="col-6">
+                    <select class="form-select" id="input-shift">
+                      <option selected>Shift</option>
                       <option value="1">Shift 1</option>
-                      <option value="2">Sihft 2</option>
+                      <option value="2">Shift 2</option>
                       <option value="3">Shift 3</option>
                     </select>
                   </div>
-                  <div class="col-md-6 mb-2">
-                    <input type="date" class="form-control" id="input_tgl" name="input_tgl" required placeholder="Enter Name here" />
-                  </div>
-                  <div class="col-md-6 mb-2">
-                    <select class="form-select" id="input-produk" required name="produk">
-                      <option selected value="produk">Jenis Produk</option>
-                      <option value="600ml">600ml</option>
-                      <option value="1500ml">1500ml</option>
+
+                  <!-- <div class="col-6">
+                    <select class="form-select" id="input-produk" name="produk">
+                      <option selected>Jenis Produk</option>
+                      <option value="3L">3 Liter</option>
+                      <option value="5L">5 Liter</option>
                     </select>
+                  </div> -->
+
+                  <div class="col-6">
+                    <input type="date" class="form-control" id="input_tgl" name="input_tgl" />
                   </div>
-                  <div class="col-md-6 mb-2">
-                    <select class="form-select sku" id="input-sku" name="sku" style="border-radius: 5px; font-size: 1rem">
-                      <option selected value="sku">Pilih SKU</option>
-                      <option value="Promo_Bola">Promo Bola</option>
-                      <option value="Promo">Promo </option>
+
+                  <div class="col-12">
+                    <select class="form-select" id="input-sku" name="sku">
+                      <option selected>Pilih SKU</option>
                       <option value="Reguler">Reguler</option>
+                      <option value="Promo">Promo</option>
                       <option value="Reguler_Bola">Reguler Bola</option>
+                      <option value="Promo_Bola">Promo Bola</option>
+                      <option value="Brunei">Brunei</option>
                     </select>
                   </div>
-                  <div class="col-lg-12">
-                    <button type="button" class="btn btn-dark" id="buttonSKU">Sumbit</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h5>Jam dan No Pallet</h5>
-              </div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-6 mb-2">
-                    <div class="form-floating mb-2">
-                      <input type="time" class="form-control form-control-sm" id="jam_awal" name="jam_awal" required placeholder="Enter Name here" />
-                      <label for="jam_awal">Dari Jam </label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                    <div class="form-floating mb-2">
-                      <input type="time" class="form-control form-control-sm" id="jam_akhir" name="jam_akhir" required placeholder="Enter Name here" />
-                      <label for="jam_akhir">Sampai Jam </label>
-                    </div>
-                  </div>
-
-                  <div class="col-md-6 mb-2">
-                    <div class="form-floating mb-2">
-                      <input type="number" class="form-control form-control-sm" id="awal" name="awal" required placeholder="Enter Name here" />
-                      <label for="awal">No Pallet Awal </label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                    <div class="form-floating mb-3">
-                      <input type="number" class="form-control form-control-sm" id="akhir" name="akhir" required placeholder="Enter Name here" />
-                      <label for="akhir">No Pallet Akhir </label>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="card">
+            <div class="card mb-3">
+              <div class="card-header fw-bold">Jam & Pallet</div>
               <div class="card-body">
-                <a class="btn btn-outline-dark mb-2" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  <div class="d-flex align-items-center">
-                    <i class="bi bi-caret-down" style="vertical-align: bottom; font-size: 1.5rem"></i>
-                    Noted
+                <div class="row g-2">
+                  <div class="col-6">
+                    <div class="form-floating">
+                      <input type="time" class="form-control" id="jam_awal" name="jam_awal" required />
+                      <label>Dari Jam</label>
+                    </div>
                   </div>
-                </a>
-                <div class="collapse" id="collapseExample">
-                  <div class="row">
-                    <div class="col-md-6 mb-2">
-                      <div class="form-floating mb-3">
-                        <input type="number" class="form-control form-control-sm" id="receh" name="receh" placeholder="Enter Name here" />
-                        <label for="receh">Receh </label>
+
+                  <div class="col-6">
+                    <div class="form-floating">
+                      <input type="time" class="form-control" id="jam_akhir" name="jam_akhir" required />
+                      <label>Sampai Jam</label>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="form-floating">
+                      <input type="number" class="form-control" id="awal" name="awal" required />
+                      <label>No Pallet Awal</label>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="form-floating">
+                      <input type="number" class="form-control" id="akhir" name="akhir" required />
+                      <label>No Pallet Akhir</label>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-floating">
+                      <input type="number" class="form-control" id="weigher" name="weigher" />
+                      <label>Reject Weigher</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-5">
+              <div class="card-body">
+                <button class="btn btn-outline-dark w-100 mb-2" data-bs-toggle="collapse" data-bs-target="#notedCollapse">📝 Noted / Penyesuaian</button>
+
+                <div class="collapse" id="notedCollapse">
+                  <div class="row g-2 mt-2">
+                    <div class="col-6">
+                      <div class="form-floating">
+                        <input type="number" class="form-control" id="receh" name="receh" />
+                        <label>Receh</label>
                       </div>
                     </div>
-                    <div class="col-md-6 mb-2">
-                      <div class="form-floating mb-3">
-                        <input type="number" class="form-control form-control-sm" id="buffer" name="buffer" placeholder="Enter Name here" />
-                        <label for="buffer">Buffer </label>
+
+                    <div class="col-6">
+                      <div class="form-floating">
+                        <input type="number" class="form-control" id="buffer" name="buffer" />
+                        <label>Buffer</label>
                       </div>
                     </div>
-                    <div class="col-md-6 mb-2">
-                      <div class="form-floating mb-3">
-                        <input type="number" class="form-control form-control-sm" id="minus" name="minus" placeholder="Enter Name here" />
-                        <label for="minus">Minus </label>
+
+                    <div class="col-6">
+                      <div class="form-floating">
+                        <input type="number" class="form-control" id="minus" name="minus" />
+                        <label>Minus</label>
                       </div>
                     </div>
-                    <div class="col-md-6 mb-2">
-                      <div class="form-floating mb-3">
-                        <input type="text" class="form-control form-control-sm" id="note" name="note" placeholder="Enter Name here" />
-                        <label for="note">Note </label>
+
+                    <div class="col-12">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" id="note" name="note" />
+                        <label>Catatan</label>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sticky-bottom bg-light">
-              <div class="d-flex justify-content-end flex-wrap flex-md-nowrap align-items-center pt-3 border-top">
-                <div class="btn-toolbar mt-2 mb-md-0">
-                  <div class="me-1">
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#whatapps" class="btn btn-outline-success btn-sm font-weight-medium rounded-pill px-4">
-                      <div class="d-flex align-items-center">
-                        <i class="bx bxl-whatsapp" style="vertical-align: bottom; font-size: 1.5rem"></i>
-                        Share
-                      </div>
-                    </button>
-                  </div>
-                  <div class="btn-group me-1">
-                    <button type="button" id="delete" class="btn btn-outline-danger btn-sm font-weight-medium rounded-pill px-4">
-                      <div class="d-flex align-items-center">
-                        <i data-feather="send" class="feather-sm fill-white me-1"></i>
-                        Reset
-                      </div>
-                    </button>
-                  </div>
-                  <div class="me-1">
-                    <button type="submit" class="btn btn-outline-primary btn-sm font-weight-medium rounded-pill px-4">
-                      <div class="d-flex align-items-center">
-                        <i data-feather="send" id="submit" class="feather-sm fill-white me-1"></i>
-                        Submit
-                      </div>
-                    </button>
-                  </div>
-                </div>
+
+            <div class="sticky-bottom bg-light border-top">
+              <div class="d-flex justify-content-end gap-2 p-2">
+                <button type="button" id="btnWhatsapp" class="btn btn-success btn-sm rounded-pill px-2"><i class="bx bxl-whatsapp"></i> Share</button>
+
+                <button type="button" id="reset" class="btn btn-danger btn-sm rounded-pill px-2">Reset</button>
+                <button type="button" id="btnEditMode" class="btn btn-warning btn-sm rounded-pill px-2">Edit Data</button>
+
+                <button type="submit" id="btnSubmit" class="btn btn-primary btn-sm rounded-pill px-4">Submit</button>
+                <button id="btnUpdateData" style="display: none" type="button" class="btn btn-outline-warning btn-sm rounded-pill px-4">Update Data</button>
               </div>
             </div>
           </form>
@@ -340,9 +310,10 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="../js/jquery.js"></script>
-    <script src="../assets/dist/sweetalert2/sweetalert2.min.js"></script>
     <script src="../js/dashboard.js"></script>
-    <script>
+    <!-- Sweetalert2 -->
+    <script src="../assets/dist/sweetalert2/sweetalert2.min.js"></script>
+    <!-- <script>
       // Mengatur nilai input tanggal menjadi tanggal hari ini
       $(document).ready(function () {
         document.getElementById("input_tgl").valueAsDate = new Date();
@@ -355,308 +326,475 @@
         var formattedDate = inputTanggal.toLocaleDateString("id-ID", options);
         document.getElementById("tgl_produksi").textContent = formattedDate;
       });
-    </script>
+    </script> -->
 
     <script>
-      // method
+      /*************************************************
+       * KONSTANTA LOCALSTORAGE
+       *************************************************/
+      const HEADER_KEY = "headerLine7";
+      const DATA_KEY = "line7";
+      const LAST_INPUT_KEY = "lastInputLine7";
+      let editMode = false;
+      let editIndex = null;
+
+      /*************************************************
+       * HEADER
+       *************************************************/
+      function saveHeader() {
+        const header = {
+          shift: $("#input-shift").val(),
+          tanggal: $("#input_tgl").val(),
+          produk: $("#input-produk").val(),
+          sku: $("#input-sku").val(),
+        };
+        localStorage.setItem(HEADER_KEY, JSON.stringify(header));
+      }
+
+      function loadHeader() {
+        const header = JSON.parse(localStorage.getItem(HEADER_KEY));
+        if (!header) {
+          $("#input_tgl").val(new Date().toISOString().split("T")[0]);
+          return;
+        }
+
+        $("#input-shift").val(header.shift);
+        $("#input_tgl").val(header.tanggal);
+        $("#input-produk").val(header.produk);
+        $("#input-sku").val(header.sku);
+      }
+
+      function formatTanggal(tgl) {
+        return new Date(tgl).toLocaleDateString("id-ID", {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+      }
+
+      /*************************************************
+       * LOAD INPUT TERAKHIR
+       *************************************************/
+      function loadLastInput() {
+        const last = JSON.parse(localStorage.getItem(LAST_INPUT_KEY));
+        if (!last) {
+          $("#weigher").val(0);
+          return;
+        }
+
+        $("#jam_awal").val(last.jam_awal);
+        $("#jam_akhir").val(last.jam_akhir);
+        $("#awal").val(last.akhirTerakhir);
+        $("#akhir").val("");
+        $("#weigher").val(0);
+      }
+
+      /*************************************************
+       * Edit Data
+       *************************************************/
+      function pilihDataEdit(index) {
+        const data = JSON.parse(localStorage.getItem("line7")) || [];
+        const item = data[index];
+
+        editIndex = index;
+
+        $("#jam_awal").val(item.jam_awal);
+        $("#jam_akhir").val(item.jam_akhir);
+        $("#awal").val(item.awal);
+        $("#akhir").val(item.akhir);
+        $("#weigher").val(item.weigher || 0);
+        $("#receh").val(item.receh || 0);
+        $("#buffer").val(item.buffer || 0);
+        $("#minus").val(item.minus || 0);
+        $("#note").val(item.note || "");
+
+        $("#btnUpdateData").show();
+        $("#btnSubmit").hide();
+        $("#btnEditMode").hide();
+
+        editMode = false;
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // ============================
+      // Button Edit
+      // ============================
+      $("#btnEditMode").on("click", function () {
+        editMode = !editMode;
+
+        $(this).toggleClass("btn-outline-warning btn-warning");
+
+        $(this).text(editMode ? "Pilih Data" : "Edit Data");
+
+        $(".result").html(showData(JSON.parse(localStorage.getItem("line7")) || []));
+      });
+
+      $("#btnUpdateData").on("click", function (e) {
+        e.preventDefault();
+
+        let data = JSON.parse(localStorage.getItem(DATA_KEY)) || [];
+        if (editIndex === null) return;
+
+        const updatedData = ambilDataForm();
+        const dataawal = loadLastInput();
+        const isLastData = editIndex === data.length - 1;
+        data[editIndex] = updatedData;
+
+        localStorage.setItem(DATA_KEY, JSON.stringify(data));
+
+        if (isLastData) {
+          // kalau edit data TERAKHIR
+          $("#jam_awal").val(updatedData.jam_akhir);
+          $("#jam_akhir").val(tambahSatuJam(updatedData.jam_akhir));
+          $("#awal").val(updatedData.akhir);
+          $("#akhir").val("");
+        } else {
+          // kalau edit data LAMA → restore lastInput
+          loadLastInput();
+        }
+
+        editIndex = null;
+        editMode = false;
+
+        $("#btnUpdateData").hide();
+        $("#btnSubmit").show();
+        $("#btnEditMode").show();
+
+        $(".result").html(showData(data));
+
+        Swal.fire({
+          icon: "success",
+          title: "Data diperbarui",
+          timer: 1200,
+          showConfirmButton: false,
+        });
+      });
+
+      function ambilDataForm() {
+        const form = $("#formTransaksi").serializeArray();
+        let obj = {};
+
+        form.forEach((item) => {
+          const numericFields = ["awal", "akhir", "receh", "weigher", "buffer", "minus"];
+          obj[item.name] = numericFields.includes(item.name) ? Number(item.value) || 0 : item.value;
+        });
+
+        return obj;
+      }
+
+      /*************************************************
+       * Reset Data
+       *************************************************/
+      $("#reset").on("click", function () {
+        Swal.fire({
+          title: "Yakin ingin menghapus data?",
+          text: "Semua data produksi LINE 7 akan dihapus dan tidak bisa dikembalikan!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#d33",
+          cancelButtonColor: "#3085d6",
+          confirmButtonText: "Ya, hapus data!",
+          cancelButtonText: "Batal",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // HAPUS DATA PRODUKSI SAJA
+            localStorage.removeItem("line7");
+            localStorage.removeItem("lastInputLine7");
+
+            // RESET FORM INPUT
+            $("#awal").val("");
+            $("#akhir").val("");
+            $("#receh").val("");
+            $("#weigher").val(0);
+
+            // RESET VAR GLOBAL
+            editIndex = null;
+            line7 = [];
+
+            // UPDATE TAMPILAN
+            $(".result").html(`<h5>Silahkan Isi Form Di bawah Ini</h5>`);
+
+            Swal.fire({
+              icon: "success",
+              title: "Berhasil",
+              text: "Data produksi berhasil dihapus.",
+              timer: 1500,
+              showConfirmButton: false,
+            });
+          }
+        });
+      });
+
+      /*************************************************
+       * INSERT DATA (LOGIKA ASLI + SIMPAN INPUT TERAKHIR)
+       *************************************************/
       function insert() {
         const form = $("#formTransaksi").serializeArray();
-        let line7 = JSON.parse(localStorage.getItem("line7")) || [];
+        let line7 = JSON.parse(localStorage.getItem(DATA_KEY)) || [];
 
         let newData = {};
 
-        form.forEach(function (item, index) {
-          let name = item["name"];
-          let value = name === "id" ? Number(item["value"]) : item["value"];
-          newData[name] = value;
+        form.forEach((item) => {
+          const numericFields = ["awal", "akhir", "receh", "weigher", "buffer", "minus"];
+          newData[item.name] = numericFields.includes(item.name) ? Number(item.value) || 0 : item.value;
         });
 
-        // console.log(newData)
-        localStorage.setItem("line7", JSON.stringify([...line7, newData]));
-        return newData;
+        line7.push(newData);
+        localStorage.setItem(DATA_KEY, JSON.stringify(line7));
+
+        localStorage.setItem(
+          LAST_INPUT_KEY,
+          JSON.stringify({
+            jam_awal: newData.jam_awal,
+            jam_akhir: newData.jam_akhir,
+            akhirTerakhir: newData.akhir,
+          }),
+        );
+
+        return line7;
       }
 
+      function tambahSatuJam(jam) {
+        if (!jam) return "";
+
+        let [hh, mm] = jam.split(":").map(Number);
+        hh = (hh + 1) % 24; // aman lewat jam 24
+
+        return String(hh).padStart(2, "0") + ":" + String(mm).padStart(2, "0");
+      }
+
+      /*************************************************
+       * SHOW DATA
+       *************************************************/
       function showData(line7) {
-        var row = "";
+        if (!line7.length) return `<h5>Silahkan Isi Form Di bawah Ini</h5>`;
 
-        var awal = 0;
-        var akhir = 0;
-        var hasil = 0;
-        var jumlahCar = 0;
-        var persen = 0;
-        var total = 0;
-        var produk = $("#input-produk").val();
+        const header = JSON.parse(localStorage.getItem(HEADER_KEY)) || {};
+        const shift = header.shift || "Shift 2";
+        const tanggal = header.tanggal ? formatTanggal(header.tanggal) : "";
+        // const produk = header.produk || "3L";
+        const sku = header.sku === "Reguler_Bola" ? "Reguler Bola" : header.sku === "Promo_Bola" ? "Promo Bola" : header.sku === "Promo" ? "Promo" : header.sku === "Brunei" ? "Brunei" : "Reguler";
 
-        // row += `<br/>`;
-        var formatTotal = "";
-        var totalAkhir = "";
-        var buffer = $("#buffer").val();
-        var minus = $("#minus").val();
+        let produksiHtml = "";
+        let rejectHtml = "";
+        let total = 0;
+        // let editIndex = null;
+        const note = $("#note").val();
+        const buffer = Number($("#buffer").val()) || 0;
+        const minus = Number($("#minus").val()) || 0;
 
-        
+        line7.forEach((item, index) => {
+          let hasil = item.akhir - item.awal;
+          let jumlahCar = hasil * 33 + (item.receh || 0);
 
-        line7.forEach(function (item, index) {
-          if (produk == "1500ml") {
-            hasil = item["akhir"] - item["awal"];
-            if (item["receh"]) {
-              jumlahCar = hasil * 33 + Number(item["receh"]);
-            } else {
-              jumlahCar = hasil * 33;
-            }
+          let persen = Math.round((jumlahCar / 2083) * 100);
+
+          let grade = persen >= 92 ? "(A)" : persen >= 88.5 ? "(B)" : persen >= 87.5 ? "(C)" : persen >= 86 ? "(D)" : "(E)";
+
+          total += jumlahCar;
+
+          rejectHtml += `${item.jam_awal.replace(":", ".")}-${item.jam_akhir.replace(":", ".")} = ${item.weigher}\n`;
+
+          if (editMode) {
+            produksiHtml += `
+            <a href="#"
+              class="list-group-item list-group-item-action d-flex justify-content-between px-0"
+              onclick="pilihDataEdit(${index})">
+              <span>
+                ${item.jam_awal.replace(":", ".")}-${item.jam_akhir.replace(":", ".")}
+                = <b>${jumlahCar.toLocaleString("id-ID")}</b> car
+              </span>
+              <span class="badge bg-warning text-dark">EDIT</span>
+            </a>
+          `;
           } else {
-            hasil = item["akhir"] - item["awal"];
-            if (item["receh"]) {
-              jumlahCar = hasil * 40 + Number(item["receh"]);
-            } else {
-              jumlahCar = hasil * 40;
-            }
+            produksiHtml += `
+            <div class="list-group-item d-flex justify-content-between px-0">
+              <span>
+                ${item.jam_awal.replace(":", ".")}-${item.jam_akhir.replace(":", ".")}
+                = <b>${jumlahCar.toLocaleString("id-ID")}</b> car
+              </span>
+              <span class="text-muted">${persen}% ${grade}</span>
+            </div>
+          `;
           }
-          if (produk == "1500ml") {
-            persen = Math.round((jumlahCar / 2083) * 100);
-          } else {
-            persen = Math.round((jumlahCar / 1666) * 100);
-          }
-          
-          
-          
-          total += Number(jumlahCar);
-          var formatJumlahCar = jumlahCar.toLocaleString("en-US").replace(",", ".");
-          formatTotal = total.toLocaleString("en-US").replace(",", ".");
-
-          var jamAwal = item.jam_awal.replace(":", "."); // Mengganti ":" dengan "."
-          var jamAkhir = item.jam_akhir.replace(":", "."); // Mengganti ":" dengan "."
-          row += `
-              <p id="hasil_produksi_${index}" class="hasil_produksi">
-                ${jamAwal}-${jamAkhir} = ${formatJumlahCar} car ${persen}% ${grade}
-                <button onclick="deleteData(${index})" class="btn btn-danger btn-sm mb-2">
-                Hapus
-                </button>
-              </p>`;
         });
-        var note = $("#note").val();
-        var bufferNumber = Number(buffer); // Pastikan buffer juga berupa angka
-        var minusNumber = Number(minus); // Pastikan buffer juga berupa angka
-        if (minus != 0) {
-          totalAkhir = total - minusNumber;
-          var formatedTotal = totalAkhir.toLocaleString("en-US").replace(",", ".");
-          row += `<b id='total_produksi'> *${formatedTotal} car*</b>`;
-          row += `<br/>`;
-          row += `<b id='noted'>*${note} = ${minus} car*</b>`;
-        } else if (buffer != 0) {
-          totalAkhir = total + bufferNumber;
-          var formatedTotal = totalAkhir.toLocaleString("en-US").replace(",", ".");
-          row += `<b id='total_produksi'> *${formatedTotal} car*</b>`;
-          row += `<br/>`;
-          row += `<b id='noted'>*${note} = ${buffer} car*</b>`;
-        } else {
-          row += `<b id='total_produksi'> *${formatTotal} car*</b>`;
-          row += `<br/>`;
-          row += `<b id='noted'>${note}</b>`;
-        }
 
-        row += `
+        let totalAkhir = total + buffer - minus;
 
-        if (line7.length == 0) {
-          return (row = `<h1>
-                Silahkan Isi Form Di bawah Ini
-              </h1>`);
-        }
+        let noteHtml = "";
+        if (minus) noteHtml = `<b>*${note} = ${minus} car*</b>`;
+        else if (buffer) noteHtml = `<b>*${note} = ${buffer} car*</b>`;
+        else if (note) noteHtml = `<b>${note}</b>`;
 
-        row.replace("${total}", total);
+        return `
+<div class="card shadow-sm mb-3">
+  <div class="card-body text-center">
+    <h5 class="mb-1">Hasil Produksi Shift ${shift}</h5>
+    <div class="fw-semibold">LINE 7</div>
+    <div class="text-muted mb-2">${tanggal}</div>
 
-        return row;
+    <div class="badge bg-success mb-3">
+      Le Minerale 1500ml ${sku} — ${totalAkhir.toLocaleString("id-ID")} car
+    </div>
+
+    <hr>
+
+    <div class="text-start">
+      <div class="fw-bold mb-1">Detail Produksi</div>
+     <div class="list-group list-group-flush small">
+        ${produksiHtml}
+      </div>
+
+    </div>
+
+    <div class="text-start mt-2">
+      <div class="fw-bold mb-1">Reject Weigher</div>
+      <pre class="fs-6">${rejectHtml}</pre>
+    </div>
+
+    ${noteHtml}
+
+  </div>
+</div>
+`;
       }
 
-      function deleteData(index) {
-        var akhir = document.getElementById("akhir").value;
-        var jamAwal = document.getElementById("jam_awal").value;
-        // var update2 = document.getElementById("total").innerHTML;
-        // alert(total);
-        document.getElementById("awal").value = null;
-        document.getElementById("akhir").value = null;
-        document.getElementById("jam_akhir").value = jamAwal;
+      /*************************************************
+       * Kirim Data Ke Whatapp
+       *************************************************/
+      function buildWhatsappText() {
+        const header = JSON.parse(localStorage.getItem("headerLine7")) || {};
+        const line7 = JSON.parse(localStorage.getItem("line7")) || [];
 
-        var jamAkhir = document.getElementById("jam_awal").value;
-        var jamAkhirArray = jamAkhir.split(":");
-
-        var jamAkhirBaru = parseInt(jamAkhirArray[0]) - 1;
-        if (jamAkhirBaru === 24) {
-          jamAkhirBaru = 0;
-          jamAkhirArray[0] = "00";
-        } else {
-          jamAkhirArray[0] = jamAkhirBaru.toString().padStart(2, "0");
+        if (line7.length === 0) {
+          Swal.fire("Data kosong", "Tidak ada data untuk dikirim", "warning");
+          return "";
         }
 
-        var jamAkhirString = jamAkhirArray.join(":");
+        const shift = header.shift || "Shift 1";
+        const tanggal = header.tanggal ? formatTanggal(header.tanggal) : "";
+        const produk = header.produk || "5L";
+        const sku = header.sku === "Reguler_Bola" ? "Reguler Bola" : header.sku === "Promo_Bola" ? "Promo Bola" : header.sku === "Promo" ? "Promo" : "Reguler";
 
-        document.getElementById("jam_awal").value = jamAkhirString;
+        let produksiText = "";
+        let rejectText = "";
+        let total = 0;
 
-        document.getElementById("receh").value = null;
-        const pElement = document.getElementById(`hasil_produksi_${index}`);
-        if (pElement) {
-          pElement.remove(); // Menghapus tag "p" berdasarkan id-nya
+        line7.forEach((item) => {
+          let hasil = item.akhir - item.awal;
+          let jumlahCar = hasil * 33 + (item.receh || 0);
 
-          // Menghapus data dari line7 berdasarkan index
-          line7.splice(index, 1);
-          localStorage.setItem("line7", JSON.stringify(line7));
+          let persen = Math.round((jumlahCar / 2083) * 100);
 
-          updateTotal(); // Memperbarui total setelah penghapusan
-        }
+          let grade = persen >= 92 ? "(A)" : persen >= 88.5 ? "(B)" : persen >= 87.5 ? "(C)" : persen >= 86 ? "(D)" : "(E)";
+
+          total += jumlahCar;
+
+          let jamAwal = item.jam_awal.replace(":", ".");
+          let jamAkhir = item.jam_akhir.replace(":", ".");
+
+          produksiText += `${jamAwal}-${jamAkhir} = ${jumlahCar.toLocaleString("id-ID")} car ${persen}% ${grade}\n`;
+
+          rejectText += `${jamAwal}-${jamAkhir} = ${item.weigher || 0}\n`;
+        });
+
+        let message = `*Hasil Produksi Shift ${shift}*
+_*LINE 7*_
+*${tanggal}*\n
+_Le Minerale 1500ml ${sku}_ *${total.toLocaleString("id-ID")} car*
+
+${produksiText}
+*Update Reject Weigher*
+${rejectText}`;
+
+        return message.trim();
       }
 
-      function updateTotal() {
-        var newTotal = 0;
-        var jenis = $("#produk").val();
-        if (jenis == "1500ml") {
-          line7.forEach(function (item) {
-            var hasil = item["akhir"] - item["awal"];
-            var jumlahCar = item["receh"] ? hasil * 33 + Number(item["receh"]) : hasil * 33;
-            newTotal += jumlahCar;
-          });
+      /*************************************************
+       * INIT
+       *************************************************/
+      $(document).ready(function () {
+        loadHeader();
+        loadLastInput();
 
-          var totalElement = document.getElementById("total_produksi");
-          if (totalElement) {
-            totalElement.textContent = ` *${newTotal.toLocaleString("en-US").replace(",", ".")} car*`;
-          }
-        } else {
-          line7.forEach(function (item) {
-            var hasil = item["akhir"] - item["awal"];
-            var jumlahCar = item["receh"] ? hasil * 40 + Number(item["receh"]) : hasil * 40;
-            newTotal += jumlahCar;
-          });
-
-          var totalElement = document.getElementById("total_produksi");
-          if (totalElement) {
-            totalElement.textContent = ` *${newTotal.toLocaleString("en-US").replace(",", ".")} car*`;
-          }
-        }
-      }
-
-      let dataTansaksi;
-      $(function () {
-        // initialize
-        line7 = JSON.parse(localStorage.getItem("line7")) || [];
-
+        let line7 = JSON.parse(localStorage.getItem(DATA_KEY)) || [];
         $(".result").html(showData(line7));
 
-        $("#buttonSKU").on("click", function () {
-          var inputShift = $("#input-shift").val();
-          var inputSku = $("#input-sku").val();
-          var inputProduk = $("#input-produk").val();
+        // ============================
+        // LOAD JAM SAAT REFRESH
+        // ============================
+        const lastJam = JSON.parse(localStorage.getItem("lastJamLine7"));
 
-          if (sku == "Reguler_Bola") {
-            sku = "Reguler Bola";
-          }
-          if (sku == "Promo_Bola") {
-            sku = "Promo Bola";
-          }
-          var tgl = "";
+        if (lastJam && lastJam.jam_akhir) {
+          $("#jam_awal").val(lastJam.jam_akhir);
+          $("#jam_akhir").val(tambahSatuJam(lastJam.jam_akhir));
+        }
 
-          // Memeriksa apakah elemen dengan id "input_tgl" sudah terdefinisi
-          const tanggalInput = document.getElementById("input_tgl");
-          const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
-          const tanggal = new Date(tanggalInput.value);
-          const tanggalFormat = tanggal.toLocaleDateString("id-ID", options);
-          if (tanggalFormat) {
-            $("#shift").text(inputShift);
-            $("#produk").text(inputProduk);
-            $("#sku").text(inputSku);
-            $("#tgl_produksi").text(tanggalFormat);
-          } else {
-            $("#shift").text(inputShift);
-            $("#produk").text(inputSku);
-            $("#sku").text(inputSku);
-          }
+        // ============================
+        // HEADER CHANGE
+        // ============================
+        $("#input-shift, #input_tgl, #input-produk, #input-sku").on("change", function () {
+          saveHeader();
+          $(".result").html(showData(line7));
         });
-        // events
+
+        // ============================
+        // btnSubmit DATA
+        // ============================
         $("#formTransaksi").on("submit", function (e) {
           e.preventDefault();
 
-          var shift = $("#shift").text();
-          var sku = $("#sku").text();
-          var produk = $("#produk").text();
-          if (shift == "shift" || sku == "sku" || produk == "produk") {
-            Swal.fire({
-              icon: "error",
-              title: "Form SKU Belum Diisi",
-              text: "Silahkan Untuk Mengisi Form SKU Terlebih Dahulu",
-            });
-          } else {
-            line7.push(insert());
+          insert();
 
-            $(".result").html(showData(line7));
-            var akhir = document.getElementById("akhir").value;
-            var jamAkhir = document.getElementById("jam_akhir").value;
-            // var update2 = document.getElementById("total").innerHTML;
-            // alert(total);
-            document.getElementById("awal").value = akhir;
-            document.getElementById("akhir").value = null;
-            document.getElementById("jam_awal").value = jamAkhir;
+          // simpan JAM AKHIR TERAKHIR
+          localStorage.setItem(
+            "lastJamLine7",
+            JSON.stringify({
+              jam_akhir: $("#jam_akhir").val(),
+            }),
+          );
 
-            var jamAkhir = document.getElementById("jam_akhir").value;
-            var jamAkhirArray = jamAkhir.split(":");
+          line7 = JSON.parse(localStorage.getItem(DATA_KEY)) || [];
+          $(".result").html(showData(line7));
 
-            var jamAkhirBaru = parseInt(jamAkhirArray[0]) + 1;
-            if (jamAkhirBaru === 24) {
-              jamAkhirBaru = 0;
-              jamAkhirArray[0] = "00";
-            } else {
-              jamAkhirArray[0] = jamAkhirBaru.toString().padStart(2, "0");
-            }
+          // ============================
+          // AUTO +1 JAM
+          // ============================
+          const nextJamAwal = tambahSatuJam($("#jam_awal").val());
+          const nextJamAkhir = tambahSatuJam($("#jam_akhir").val());
 
-            var jamAkhirString = jamAkhirArray.join(":");
+          $("#jam_awal").val(nextJamAwal);
+          $("#jam_akhir").val(nextJamAkhir);
 
-            document.getElementById("jam_akhir").value = jamAkhirString;
+          // ============================
+          // RESET FIELD LAIN
+          // ============================
+          $("#awal").val($("#akhir").val());
+          $("#akhir").val("");
+          $("#receh").val("");
+          $("#weigher").val(0);
 
-            document.getElementById("receh").value = null;
-          }
-        });
-
-        // meriset
-        $("#delete").on("click", function (e) {
-          e.preventDefault();
           Swal.fire({
-            title: "Are you sure?",
-            text: "Untuk Menghapus semua data?!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              line7 = filterTransaksi = [];
-              localStorage.removeItem("line7");
-              $(".result").html(showData(line7));
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success",
-              });
-            }
+            icon: "success",
+            title: "Berhasil",
+            text: "Data produksi berhasil Ditambahkan.",
+            timer: 1500,
+            showConfirmButton: false,
           });
         });
 
-        //
-        $("#wa").on("click", function () {
-          var title = $("#title").text();
-          var line = $("#line_running").text();
-          var tgl_produksi = $("#tgl_produksi").text();
-          var total_produksi = $("#total_produksi").text();
-          var no_hp = $("#no_hp").val();
-          var noted = $("#noted").text();
-          var sku = $("#sku_running").text();
-          var hasilProduksi = "";
-          $(".hasil_produksi").each(function () {
-            var text = $(this).text().trim();
-            var withoutDataAfterPercentage = text.substring(0, text.indexOf("%") + 1); // Mengambil teks hingga tanda '%' termasuk '%'
-            hasilProduksi += withoutDataAfterPercentage + "%0a";
-          });
+        // ============================
+        // WHATSAPP
+        // ============================
+        $("#btnWhatsapp").on("click", function () {
+          const text = buildWhatsappText();
+          if (!text) return;
 
-          var url =
-            "https://wa.me/+62" + "?text=" + "*" + title + "*" + "%0a" + "_*" + line + "*_" + "%0a" + "*" + tgl_produksi + "*" + "%0a" + "%0a" + "_" + sku + "_" + total_produksi + "%0a" + "%0a" + hasilProduksi + "%0a" + noted;
-
-          window.open(url, "_blank").focus();
+          const url = "https://wa.me/?text=" + encodeURIComponent(text);
+          window.open(url, "_blank");
         });
       });
     </script>
